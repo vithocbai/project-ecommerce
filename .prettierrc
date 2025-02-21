@@ -1,0 +1,6 @@
+{
+    "trailingComma": "none", // obj cuối ko , 
+    "tabWidth": 4,
+    "semi": false, // khi lưu tự thêm ;
+    "singleQuote": true
+}
