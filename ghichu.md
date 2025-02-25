@@ -14,3 +14,9 @@
 
 -   styles > \_variable.module.scss , \_global.module.scss , \_mixin.module.scss , main.scss
 -   components > Layout (main), Header, Footer ở App bọc <>MainLayout</>
+
+- tự phân tích dự án và tạo ra các constant.js sau đó import vô rồi render ...
+
+## Alias tự động tạo file jsconfig.json 
+
+## Lên iconfy react nhúng svg về mày 
