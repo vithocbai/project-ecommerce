@@ -1,0 +1,25 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.actionBtn {
+    margin-top: 38px;
+    @include btn(175px, 42px, $primary_color, 3px);
+    transition: 200ms linear;
+    &:hover {
+        background-color: #ffffff00;
+        cursor: pointer;
+        border: 1px solid $primary_color;
+    }
+
+    &:hover .actionLink {
+        color: #333333;
+    }
+}
+
+.actionLink {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    fill: #fff;
+}

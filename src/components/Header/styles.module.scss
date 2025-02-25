@@ -2,8 +2,11 @@
 @import '@styles/variable.module.scss';
 
 .container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     @include flex_box_custom(center, center, 0);
-    background-color: $bg_color;
 
 }
 

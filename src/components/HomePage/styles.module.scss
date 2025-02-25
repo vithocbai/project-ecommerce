@@ -1,0 +1,7 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    position: relative;
+    background-color: $bg_color;
+}

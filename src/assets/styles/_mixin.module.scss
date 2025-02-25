@@ -16,3 +16,15 @@
     $color: $color;
     $radius: $radius;
 }
+
+
+@mixin btn($w,$h,$bgColor,$radius) {
+    width: $w;
+    height: $h;
+    background-color: $bgColor;
+    border-radius: $radius;
+    outline: none;
+    border: none;
+}
+
+

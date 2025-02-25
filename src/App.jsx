@@ -1,13 +1,15 @@
-import '@styles/main.scss'
-import MyHeader from '@components/Header/Header'
-import MyFooter from '@components/Footer/Footer'
+
+import Info from '@components/Info/Info'
 import MainLayout from './components/Layout/Layout'
+import HomePage from '@components/HomePage/HomePage'
+
 
 
 function App() {
     return (
         <>
-            <MyHeader />
+         <HomePage />
+         <Info />
         </>
     )
 }
