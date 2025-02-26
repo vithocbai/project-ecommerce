@@ -37,7 +37,7 @@ function ProductItem({src, prevSrc, title, price}) {
             </div>
             <div className={contentProduct}>
                 <h3>
-                    <a  className={titleProduct} href="">10K Yellow Gold</a>
+                    <a className={titleProduct} href="">10K Yellow Gold</a>
                 </h3>
                 <span className={priceProduct}>$99.99</span>
             </div>

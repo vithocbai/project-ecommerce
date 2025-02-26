@@ -38,7 +38,7 @@ const CountdownTimer = ({ targetDate }) => {
         if (timeLeft[interval] !== undefined) {
             timeComponents.push(
                 <span key={interval} className={box}>
-                    {formatNumber(timeLeft[interval])} <span class={date}>{interval}</span> {' '}
+                    {formatNumber(timeLeft[interval])} <span className={date}>{interval}</span> {' '}
                 </span>
             )
         }

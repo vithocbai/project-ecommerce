@@ -4,8 +4,14 @@ import styles from './styles.module.scss'
 import Info from '@components/Info/Info'
 import AdvanceHeading from '@components/AdvanceHeading/AdvanceHeading'
 import HeadingListProduct from '@components/HeadingListProduct/HeadingListProduct'
+import { useEffect } from 'react'
+import { getProduct } from '@/apis/productService'
 
 function HomePage() {
+    useEffect(() => {
+        getProduct()
+    }, [])
+    
     const { container } = styles
     return (
         <>

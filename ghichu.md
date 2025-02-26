@@ -20,3 +20,7 @@
 ## Alias tự động tạo file jsconfig.json 
 
 ## Lên iconfy react nhúng svg về mày 
+
+## đến phân List Product thì sử dụng framwork Axios của js để Call Api 
+
+// link API List Product - https://be-project-reactjs.onrender.com/api-docs/#/
