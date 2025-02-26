@@ -12,7 +12,7 @@
 }
 
 .containerCard {
-    @include flex_box_custom(center,flex-start,16px);
+    @include flex_box_custom(center, flex-start, 16px);
     width: 280px;
     padding: 15px;
 
@@ -30,9 +30,8 @@
     }
 
     .infoIcon {
-        width: 44px;
-        height: 44px;
-        padding-top: 5px;
+        width: 40px;
+        height: 40px;
         transform: scaleX(-1);
         filter: brightness(0) saturate(100%) invert(43%) sepia(0%)
             saturate(1133%) hue-rotate(185deg) brightness(101%) contrast(93%);
