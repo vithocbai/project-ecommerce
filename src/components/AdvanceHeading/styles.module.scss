@@ -1,0 +1,39 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    text-align: center;
+    margin: 65px 0 15px;
+}
+
+.desc {
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 26px;
+    color: $thrid_color;
+}
+
+.subHeading {
+    position: relative;
+    font-size: 24px;
+    color: $primary_color;
+    font-weight: 400;
+
+    &::after,
+    &::before {
+        content: '';
+        display: block;
+        border-bottom: 4px double #e1e1e1;
+        position: absolute;
+        top: 50%;
+        width: 35%;
+    }
+
+    &::before {
+        left: 0;
+    }
+
+    &::after {
+        right: 0;
+    }
+}

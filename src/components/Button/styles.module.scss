@@ -2,7 +2,6 @@
 @import '@styles/variable.module.scss';
 
 .actionBtn {
-    margin-top: 38px;
     @include btn(175px, 42px, $primary_color, 3px);
     transition: 200ms linear;
     &:hover {
@@ -14,6 +13,10 @@
     &:hover .actionLink {
         color: #333333;
     }
+}
+
+.actionBtn-width160 {
+    @include btn(160px, 37px, $primary_color, 3px);
 }
 
 .actionLink {

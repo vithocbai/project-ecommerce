@@ -1,0 +1,33 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
+.container {
+    width: 50%;
+    height: 368px;
+    background-image: url('https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/photo-of-man-wearing-white-hoodie-5474310.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    .content {
+        @include flex_box_custom(center, center, 0);
+        flex-direction: column;
+        height: inherit;
+    }
+
+    .dateTime {
+        margin-bottom: 18px;
+    }
+
+    .title {
+        font-size: 28px;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 40px;
+        color: $detail_color;
+        margin: 10px 20px;
+    }
+
+    .buyNow {
+        margin-top: 10px;
+    }
+}

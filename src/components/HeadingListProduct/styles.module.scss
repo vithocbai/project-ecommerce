@@ -1,0 +1,13 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
+.container {
+    width: inherit;
+    @include flex_box_custom(center, space-between, 0);
+
+    .flex {
+        flex: 1;
+    }
+
+    
+}

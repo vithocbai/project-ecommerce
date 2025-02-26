@@ -14,7 +14,6 @@ function MyHeader() {
         containerBox,
         containerBoxIcon,
         containerMenu,
-        menu
     } = styles
     return (
         <div className={container}>

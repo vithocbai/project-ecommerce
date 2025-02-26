@@ -2,7 +2,7 @@ import Button from '../Button/Button'
 import styles from './styles.module.scss'
 
 function Banner() {
-    const { container, content, heading, desc} = styles
+    const { container, content, heading, desc, btn } = styles
     return (
         <>
             <div className={container}>
@@ -12,7 +12,9 @@ function Banner() {
                         Make yours celebrations even more special this years
                         with beautiful.
                     </p>
-                    <Button content={'Go to shop'}/>
+                    <div className={btn}>
+                        <Button content={'Go to shop'} />
+                    </div>
                 </div>
             </div>
         </>

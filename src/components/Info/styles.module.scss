@@ -12,9 +12,7 @@
 }
 
 .containerCard {
-    display: flex;
-    align-items: center;
-    gap: 16px;
+    @include flex_box_custom(center,flex-start,16px);
     width: 280px;
     padding: 15px;
 

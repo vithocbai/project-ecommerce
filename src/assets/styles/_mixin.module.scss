@@ -1,24 +1,15 @@
-
 @mixin radius_common($radius: 10px) {
     border-radius: $radius;
 }
 
-@mixin flex_box_custom($x,$y,$gap: 10px){
+@mixin flex_box_custom($x, $y, $gap: 10px) {
     display: flex;
     align-items: $x;
     justify-content: $y;
     gap: $gap;
 }
 
-@mixin btn($w,$h,$color,$radius) {
-    width: $w;
-    height: $h;
-    $color: $color;
-    $radius: $radius;
-}
-
-
-@mixin btn($w,$h,$bgColor,$radius) {
+@mixin btn($w, $h, $bgColor, $radius) {
     width: $w;
     height: $h;
     background-color: $bgColor;
@@ -27,4 +18,9 @@
     border: none;
 }
 
-
+// @mixin grid_column($column, $y, $gap) {
+//     display: grid;
+//     grid-template-columns: (1fr, 2);
+//     align-items: $y;
+//     column-gap: $gap;
+// }

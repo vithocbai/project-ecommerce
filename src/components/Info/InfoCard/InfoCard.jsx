@@ -1,7 +1,7 @@
 import styles from '../styles.module.scss'
 
 function InfoCard({ title, desc, src }) {
-    const { containerCard, content, infoTitle, infoDesc, infoIcon} = styles
+    const { containerCard, infoTitle, infoDesc, infoIcon} = styles
     return (
         <>
             <div className={containerCard}>
