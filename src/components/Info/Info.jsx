@@ -9,8 +9,8 @@ function Info() {
         <>
             <MainLayout>
                 <section className={container}>
-                    {dataInfo.map((item) => {
-                        return <InfoCard title={item.title} desc={item.description} src={item.src} />
+                    {dataInfo.map((data, item) => {
+                        return <InfoCard key={item} title={data.title} desc={data.description} src={data.src} />
                     })}
                 </section>
             </MainLayout>

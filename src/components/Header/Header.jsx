@@ -20,14 +20,14 @@ function MyHeader() {
             <div className={containerHeader}>
                 <div className={containerBox}>
                     <div className={containerBoxIcon}>
-                        {dataBoxIcons.map((item) => {
-                            return <BoxIcon type={item.type} href={item.href} />
+                        {dataBoxIcons.map((data,item,) => {
+                            return <BoxIcon key={item} type={data.type} href={data.href} />
                         })}
                     </div>
                     <div className={containerMenu}>
-                        {dataMenu.slice(0, 3).map((item) => {
+                        {dataMenu.slice(0, 3).map((data, item) => {
                             return (
-                                <Menu content={item.content} href={item.href} />
+                                <Menu  key={item} content={data.content} href={data.href} />
                             )
                         })}
                     </div>
@@ -42,9 +42,9 @@ function MyHeader() {
 
                 <div className={containerBox}>
                     <div className={containerMenu}>
-                        {dataMenu.slice(3, dataMenu.length).map((item) => {
+                        {dataMenu.slice(3, dataMenu.length).map((data, item) => {
                             return (
-                                <Menu content={item.content} href={item.href} />
+                                <Menu key={item} content={data.content} href={data.href} />
                             )
                         })}
                     </div>

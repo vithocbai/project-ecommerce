@@ -7,17 +7,18 @@ import bagIcon from '@icons/svgs/bagIcon.svg'
 function ProductItem({src, prevSrc, title, price}) {
     const { boxImg, img, imgWhenHover, iconFncWhenShow, icon, contentProduct, titleProduct , priceProduct } =
         styles
+
     return (
         <div>
             <div className={boxImg}>
                 <img
                     className={img}
-                    src="https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min.jpg"
+                    src={src}
                     alt=""
                 />
                 <img
                     className={imgWhenHover}
-                    src="https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min.jpg"
+                    src={prevSrc}
                     alt=""
                 />
                 <div className={iconFncWhenShow}>
@@ -37,9 +38,9 @@ function ProductItem({src, prevSrc, title, price}) {
             </div>
             <div className={contentProduct}>
                 <h3>
-                    <a className={titleProduct} href="">10K Yellow Gold</a>
+                    <a className={titleProduct} href="">${title}</a>
                 </h3>
-                <span className={priceProduct}>$99.99</span>
+                <span className={priceProduct}>${price}</span>
             </div>
         </div>
     )
