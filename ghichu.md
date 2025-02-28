@@ -27,3 +27,7 @@
 
 ## Lam scroll 
 - scroll trinh duyêt , scroll up down 
+- 
+## Cấu hình router 
+- pmpn add react-router-dom 
+- 
