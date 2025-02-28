@@ -9,6 +9,7 @@ import PupularProduct from '@components/PupularProduct/PupularProduct'
 import { useState } from 'react'
 import getProduct from '@/apis/productService'
 import SaleHomePage from '@components/SaleHomePage/SaleHomePage'
+import MyFooter from '@components/Footer/Footer'
 
 function HomePage() {
     const [listProduct,setListProduct] = useState([])
@@ -28,6 +29,7 @@ function HomePage() {
                 <HeadingListProduct datas={listProduct.slice(0,2)}/>
                 <PupularProduct datas={listProduct.slice(2, 10)}/>
                 <SaleHomePage />
+                <MyFooter />
             </div>
         </>
     )

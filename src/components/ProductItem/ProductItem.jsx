@@ -38,7 +38,7 @@ function ProductItem({src, prevSrc, title, price}) {
             </div>
             <div className={contentProduct}>
                 <h3>
-                    <a className={titleProduct} href="">${title}</a>
+                    <a className={titleProduct} href="">{title}</a>
                 </h3>
                 <span className={priceProduct}>${price}</span>
             </div>
