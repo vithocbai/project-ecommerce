@@ -1,0 +1,39 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    @include flex_box_custom(center, space-around, 0);
+    margin-top: 120px;
+    text-align: center;
+
+    & .middleContent {
+        padding: 15px;
+        max-width: 320px;
+        text-align: center;
+    }
+
+    & .title {
+        margin-bottom: 20px;
+        font-size: 35px;
+        font-weight: 400;
+        text-transform: capitalize;
+        line-height: 46px;
+        color: $detail_color;
+    }
+
+    & .desc {
+        color: $thrid_color;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+        margin-bottom: 20px;
+    }
+
+    & .mtBtn {
+        margin-top: 20px;
+    }
+
+    & .image {
+        width: 100%;
+    }
+}

@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import PupularProduct from '@components/PupularProduct/PupularProduct'
 import { useState } from 'react'
 import getProduct from '@/apis/productService'
+import SaleHomePage from '@components/SaleHomePage/SaleHomePage'
 
 function HomePage() {
     const [listProduct,setListProduct] = useState([])
@@ -17,7 +18,6 @@ function HomePage() {
     }, [])    
 
     const { container } = styles
-    console.log(listProduct)
     return (
         <>
             <div className={container}>
@@ -27,6 +27,7 @@ function HomePage() {
                 <AdvanceHeading />
                 <HeadingListProduct datas={listProduct.slice(0,2)}/>
                 <PupularProduct datas={listProduct.slice(2, 10)}/>
+                <SaleHomePage />
             </div>
         </>
     )

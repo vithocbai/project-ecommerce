@@ -24,3 +24,6 @@
 ## đến phân List Product thì sử dụng framwork Axios của js để Call Api 
 
 // link API List Product - https://be-project-reactjs.onrender.com/api-docs/#/
+
+## Lam scroll 
+- scroll trinh duyêt , scroll up down 

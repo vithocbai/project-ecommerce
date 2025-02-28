@@ -1,7 +1,8 @@
+import classNames from 'classnames'
 import styles from './styles.module.scss'
 
 function Button({ content, size }) {
-    const { actionBtn, actionLink} = styles
+    const {actionBtn, actionLink} = styles
     return (
         <>
             <button className={`${actionBtn} ${styles[`actionBtn-${size}`]}`}>

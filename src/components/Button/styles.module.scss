@@ -3,10 +3,11 @@
 
 .actionBtn {
     @include btn(175px, 42px, $primary_color, 3px);
-    transition: 200ms linear;
+    cursor: pointer;
+
     &:hover {
+        transition: background-color 200ms linear;
         background-color: #ffffff00;
-        cursor: pointer;
         border: 1px solid $primary_color;
     }
 
@@ -19,8 +20,24 @@
     @include btn(160px, 37px, $primary_color, 3px);
 }
 
+.actionBtn-width167 {
+    @include btn(167px, 41px, $white_color, 3px);
+    border: 1px solid $primary_color;
+    &:hover {
+        background-color: $primary_color;
+    }
+
+    &:hover .actionLink {
+        color: $white_color;
+    }
+
+    .actionLink {
+        color: $primary_color;
+    }
+}
+
 .actionLink {
-    color: #fff;
+    color: $white_color;
     text-decoration: none;
     font-size: 14px;
     font-weight: 400;
