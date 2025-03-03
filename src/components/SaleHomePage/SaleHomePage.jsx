@@ -1,13 +1,12 @@
 import Button from '@components/Button/Button'
 import styles from './styles.module.scss'
-import { useState } from 'react'
-import { useRef } from 'react'
-import { useEffect } from 'react'
-import useTranslateX from './translateXPosition'
+import { useState, useRef, useEffect } from 'react'
+
+import useTranslateXImage from '@/hooks/useTranslateXImage'
 
 function SaleHomePage() {
     const { container, middleContent, title, desc, mtBtn, image } = styles
-    const {translateXPositon} = useTranslateX()
+    const { translateXPositon } = useTranslateXImage()
 
     return (
         <div className={container}>

@@ -4,7 +4,7 @@ import CountdownTimer from '@components/CountdownTimer/CountdownTimer'
 
 function CountDownBanner() {
     const { container, content, title, buyNow, dateTime} = styles
-    const targetDate = '2025-03-01'
+    const targetDate = '2025-05-01'
     return (
         <div className={container}>
             <div className={content}>

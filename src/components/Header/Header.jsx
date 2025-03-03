@@ -6,6 +6,10 @@ import logo from '@icons/images/logo.png'
 import reLoad from '@icons/svgs/reLoadIcon.svg'
 import heartIcon from '@icons/svgs/heartIcon.svg'
 import cartIcon from '@icons/svgs/cartIcon.svg'
+import useScrollHandling from '@/hooks/useScrollHanding'
+import classNames from 'classnames'
+import { useEffect } from 'react'
+import { useState } from 'react'
 
 function MyHeader() {
     const {
@@ -14,20 +18,44 @@ function MyHeader() {
         containerBox,
         containerBoxIcon,
         containerMenu,
+        headerTop,
+        fixedPositon
     } = styles
+
+    const { scrollPositon } = useScrollHandling()
+    console.log(scrollPositon)
+    const [fixedHeader, setFixedhader] = useState()
+    useEffect(() => {
+        setFixedhader(scrollPositon > 88 ? true : false)
+    })
+
     return (
-        <div className={container}>
+        <div
+            className={classNames(container, headerTop, {
+                [fixedPositon]: fixedHeader
+            })}
+        >
             <div className={containerHeader}>
                 <div className={containerBox}>
                     <div className={containerBoxIcon}>
-                        {dataBoxIcons.map((data,item,) => {
-                            return <BoxIcon key={item} type={data.type} href={data.href} />
+                        {dataBoxIcons.map((data, item) => {
+                            return (
+                                <BoxIcon
+                                    key={item}
+                                    type={data.type}
+                                    href={data.href}
+                                />
+                            )
                         })}
                     </div>
                     <div className={containerMenu}>
                         {dataMenu.slice(0, 3).map((data, item) => {
                             return (
-                                <Menu  key={item} content={data.content} href={data.href} />
+                                <Menu
+                                    key={item}
+                                    content={data.content}
+                                    href={data.href}
+                                />
                             )
                         })}
                     </div>
@@ -42,11 +70,17 @@ function MyHeader() {
 
                 <div className={containerBox}>
                     <div className={containerMenu}>
-                        {dataMenu.slice(3, dataMenu.length).map((data, item) => {
-                            return (
-                                <Menu key={item} content={data.content} href={data.href} />
-                            )
-                        })}
+                        {dataMenu
+                            .slice(3, dataMenu.length)
+                            .map((data, item) => {
+                                return (
+                                    <Menu
+                                        key={item}
+                                        content={data.content}
+                                        href={data.href}
+                                    />
+                                )
+                            })}
                     </div>
                     <div className={containerBoxIcon}>
                         <img src={reLoad} alt="" />
@@ -55,7 +89,6 @@ function MyHeader() {
                     </div>
                 </div>
             </div>
-            
         </div>
     )
 }
