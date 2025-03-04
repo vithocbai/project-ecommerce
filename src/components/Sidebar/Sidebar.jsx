@@ -3,6 +3,7 @@ import styles from './styles.module.scss'
 import classNames from 'classnames'
 import { SideBarContext } from '@/context/SideBarProvider'
 import { MdOutlineClose } from 'react-icons/md'
+import Login from '@components/ContentSidebar/Login/Login'
 
 function Sidebar() {
     const { isOpen, setIsOpen } = useContext(SideBarContext)
@@ -21,7 +22,7 @@ function Sidebar() {
                     [slideSideBar]: isOpen
                 })}
             >
-                This is sibar
+                <Login />
                 {isOpen && <div
                     onClick={() => handleToggle()}
                     className={closeIcon}

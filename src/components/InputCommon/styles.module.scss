@@ -1,0 +1,39 @@
+@import '@styles/variable.module.scss';
+
+.formLogin {
+    margin-top: 20px;
+
+    .formLabel {
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: $thrid_color;
+    }
+
+    .boxInput {
+        position: relative;
+
+        .boxIcon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-35%);
+        }
+    }
+    .formInput {
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        outline: none;
+        padding: 9px 18px;
+        font-size: 16px;
+
+        &:focus {
+            border: 1px solid #333;
+        }
+    }
+
+    
+
+   
+}

@@ -1,0 +1,77 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
+.container {
+    .title {
+        text-align: center;
+    }
+
+    .signIn {
+        display: inline-block;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 18px;
+        color: $thrid_color;
+
+        &::after {
+            display: block;
+            content: '';
+            right: 0;
+            top: 0;
+            width: 0;
+            height: 2px;
+            background-color: $thrid_color;
+            transition: width 0.3s ease-in-out;
+        }
+
+        &:hover::after {
+            left: 0;
+            right: auto;
+            width: 100%;
+        }
+    }
+
+    .inputCheck {
+        margin-right: 12px;
+    }
+
+    .formLabel {
+        margin-top: 20px;
+        display: inline-block;
+        max-width: 100%;
+        margin-bottom: 5px;
+        font-size: 14px;
+        color: $thrid_color;
+    } 
+
+    .login {
+        border: 1px solid $primary_color;
+        transition: background-color 0.2s linear;
+        text-transform: uppercase;
+        color: $white_color;
+        font-size: 12px;
+        width: 100%;
+        margin-top: 20px;
+        padding: 13px 30px;
+        background-color: $primary_color;
+        border-radius: 1px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: $white_color;
+            color: $primary_color;
+        }
+    }
+
+    .lostPass {
+        margin-top: 20px;
+        text-align: center;
+    }
+
+    .lostPassLink {
+        text-decoration: none;
+        color: $thrid_color;
+        font-size: 14px;
+    }
+}
