@@ -21,6 +21,8 @@
 
 ## Lên iconfy react nhúng svg về mày 
 
+## dùng Icon react hay hơn pnpm add react-icons --save 
+
 ## đến phân List Product thì sử dụng framwork Axios của js để Call Api 
 
 // link API List Product - https://be-project-reactjs.onrender.com/api-docs/#/
@@ -30,4 +32,10 @@
 - 
 ## Cấu hình router 
 - pmpn add react-router-dom 
-- 
+
+## Làm scrollImage and FixedHeader
+
+## 1-2-3 tháng 3 nợ 5 clip 
+
+## sibar ở nhiều trang lên cần tạo ra 1 context 
+

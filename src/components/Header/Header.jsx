@@ -10,6 +10,8 @@ import useScrollHandling from '@/hooks/useScrollHanding'
 import classNames from 'classnames'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useContext } from 'react'
+import { SideBarContext } from '@/context/SideBarProvider'
 
 function MyHeader() {
     const {
@@ -23,12 +25,13 @@ function MyHeader() {
     } = styles
 
     const { scrollPositon } = useScrollHandling()
-    console.log(scrollPositon)
     const [fixedHeader, setFixedhader] = useState()
     useEffect(() => {
         setFixedhader(scrollPositon > 88 ? true : false)
     })
 
+    const {isOpen, setIsOpen} = useContext(SideBarContext)
+    
     return (
         <div
             className={classNames(container, headerTop, {
@@ -78,6 +81,7 @@ function MyHeader() {
                                         key={item}
                                         content={data.content}
                                         href={data.href}
+                                        setIsOpen={setIsOpen}
                                     />
                                 )
                             })}
