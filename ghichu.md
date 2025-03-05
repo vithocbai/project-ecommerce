@@ -39,3 +39,5 @@
 
 ## sibar ở nhiều trang lên cần tạo ra 1 context 
 
+## trong react js có framWork là Formik dùng để quản lý state submit - và yup để xác thực dữ liệu như các rule 
+-- pnpm add formik yup 

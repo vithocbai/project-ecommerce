@@ -1,6 +1,7 @@
 import InputCommon from '@components/InputCommon/InputCommon'
 import styles from './styles.module.scss'
-import Button from '@components/Button/Button'
+import { useFormik } from 'formik'
+import * as Yup from 'yup'
 
 function Login() {
     const {
@@ -8,11 +9,30 @@ function Login() {
         title,
         signIn,
         inputCheck,
-        login,
         formLabel,
+        submitForm,
         lostPass,
         lostPassLink
     } = styles
+
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+            password: ''
+        },
+        validationSchema: Yup.object({
+            email: Yup.string()
+                .email('Invalid email')
+                .required('Email is required'),
+            password: Yup.string()
+                .required('Password is Required')
+                .min(6, 'Password must be at 6 characters')
+        }),
+        onSubmit: (values) => {
+            console.log('Form Data:', values);
+        }
+    })
+
     return (
         <div className={container}>
             <div className={title}>
@@ -20,27 +40,36 @@ function Login() {
                     Sign In
                 </a>
             </div>
-            <InputCommon
-                label={'Username or email'}
-                type={'email'}
-                isRequred={true}
-            />
-            <InputCommon
-                label={'Password '}
-                type={'password'}
-                isRequred={true}
-            />
+            <form onSubmit={formik.handleSubmit}>
+                <InputCommon
+                    id="email"
+                    label="Username or email"
+                    type="email"
+                    isRequred
+                    formik={formik}
+                />
+            
+                <InputCommon
+                    id="password"
+                    label="Password "
+                    type="password"
+                    isRequred
+                    formik={formik}
+                />
 
-            <div>
-                <input type="checkbox" className={inputCheck} />
-                <label htmlFor="" className={formLabel}>
-                    Remember me
-                </label>
-            </div>
+                <div>
+                    <input type="checkbox" className={inputCheck} />
+                    <label htmlFor="" className={formLabel}>
+                        Remember me
+                    </label>
+                </div>
 
-            <div style={{ height: '40px', marginTop: '20px' }}>
-                <Button content="LOGIN" primary />
-            </div>
+                <div style={{ height: '40px'}}>
+                    <button className={submitForm} type='submit'>
+                        LOGIN
+                    </button>
+                </div>
+            </form>
 
             <p className={lostPass}>
                 <a href="" className={lostPassLink}>

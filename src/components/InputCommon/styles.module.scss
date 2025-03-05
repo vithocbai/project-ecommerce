@@ -1,6 +1,6 @@
 @import '@styles/variable.module.scss';
 
-.formLogin {
+.container {
     margin-top: 20px;
 
     .formLabel {
@@ -21,6 +21,7 @@
             transform: translateY(-35%);
         }
     }
+    
     .formInput {
         width: 100%;
         border: 1px solid #e1e1e1;
@@ -33,7 +34,10 @@
         }
     }
 
-    
+    .errorMessage {
+        color: red;
+        font-size: 12px;
+    }
 
    
 }
