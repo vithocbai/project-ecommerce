@@ -12,6 +12,9 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { SideBarContext } from '@/context/SideBarProvider'
+import { TfiReload } from 'react-icons/tfi'
+import { CiHeart } from 'react-icons/ci'
+import { BsCartCheck } from 'react-icons/bs'
 
 function MyHeader() {
     const {
@@ -26,12 +29,18 @@ function MyHeader() {
 
     const { scrollPositon } = useScrollHandling()
     const [fixedHeader, setFixedhader] = useState()
+
+    const { setIsOpen, setType } = useContext(SideBarContext)
+
+    const handleOpenSideBar = (type) => {
+        setIsOpen(true)
+        setType(type)
+    }
+
     useEffect(() => {
         setFixedhader(scrollPositon > 88 ? true : false)
     })
 
-    const {isOpen, setIsOpen} = useContext(SideBarContext)
-    
     return (
         <div
             className={classNames(container, headerTop, {
@@ -81,15 +90,23 @@ function MyHeader() {
                                         key={item}
                                         content={data.content}
                                         href={data.href}
-                                        setIsOpen={setIsOpen}
                                     />
                                 )
                             })}
                     </div>
                     <div className={containerBoxIcon}>
-                        <img src={reLoad} alt="" />
-                        <img src={heartIcon} alt="" />
-                        <img src={cartIcon} alt="" />
+                        <TfiReload
+                            style={{ fontSize: '22px' }}
+                            onClick={() => handleOpenSideBar('compare')}
+                        />
+                        <CiHeart
+                            style={{ fontSize: '28px' }}
+                            onClick={() => handleOpenSideBar('wishlist')}
+                        />
+                        <BsCartCheck
+                            style={{ fontSize: '22px' }}
+                            onClick={() => handleOpenSideBar('cart')}
+                        />
                     </div>
                 </div>
             </div>

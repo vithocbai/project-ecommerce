@@ -1,0 +1,50 @@
+@import '@styles/variable.module.scss';
+@import '@styles/mixin.module.scss';
+
+.container {
+    @include flex_box_custom(flex-start, flex-start, 24px);
+    position: relative;
+    margin-top: 30px;
+    padding: 20px 12px;
+    border-radius: 3px;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+        background-color: #f7f7f7;
+    }
+
+    .image {
+        width: 70px;
+    }
+
+    .titleLink {
+        font-weight: 500;
+        font-size: 15px;
+        text-decoration: none;
+        color: $primary_color;
+    }
+
+    .price {
+        color: $thrid_color;
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 14px;
+    }
+    
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 0;
+        color: $thrid_color;
+        transition: all .2s ease-out;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    &:hover .close {
+        right: 12px;
+        opacity: 6;
+        visibility: visible;
+    }
+}
