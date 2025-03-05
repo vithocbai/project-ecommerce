@@ -13,7 +13,7 @@ function Banner() {
                         with beautiful.
                     </p>
                     <div className={btn}>
-                        <Button content={'Go to shop'} />
+                        <Button content={'Go to shop'} size="width175"/>
                     </div>
                 </div>
             </div>

@@ -5,4 +5,9 @@
     height: 100%;
     flex-direction: column;
     width: 100%;
+
+    .groupBtn {
+        @include flex_box_custom(normal,center,10px);
+        flex-direction: column;
+    }
 }

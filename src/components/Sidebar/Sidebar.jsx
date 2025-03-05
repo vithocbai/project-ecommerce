@@ -5,6 +5,8 @@ import { SideBarContext } from '@/context/SideBarProvider'
 import { MdOutlineClose } from 'react-icons/md'
 import Login from '@components/ContentSidebar/Login/Login'
 import Compare from '@components/ContentSidebar/Compare/Compare'
+import Wishlist from '@components/ContentSidebar/Wishlist/Wishlist'
+import Cart from '@components/ContentSidebar/Cart/Cart'
 
 function Sidebar() {
     const { container, overlay, sidebar, slideSideBar, closeIcon } = styles
@@ -20,9 +22,9 @@ function Sidebar() {
             case 'compare':
                 return <Compare />
             case 'wishlist':
-                return 'wishlist'
+                return <Wishlist />
             case 'cart':
-                return 'cart'
+                return <Cart />
         }
     }
 
@@ -39,12 +41,11 @@ function Sidebar() {
             >
                 {isOpen && (
                     <div onClick={() => handleToggle()} className={closeIcon}>
-                        <MdOutlineClose style={{fontSize: '22px'}}/>
+                        <MdOutlineClose style={{ fontSize: '22px' }} />
                     </div>
                 )}
                 {handleRenderContent()}
             </div>
-            
         </div>
     )
 }

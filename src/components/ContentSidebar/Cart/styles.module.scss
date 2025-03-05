@@ -1,0 +1,18 @@
+@import '@styles/mixin.module.scss';
+
+.container {
+    @include flex_box_custom(normal, space-between, 0);
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+
+    .total {
+        @include flex_box_custom(center, space-between, 0);
+        padding-bottom: 20px;
+    }
+
+    .groupBtn {
+        @include flex_box_custom(normal,center,10px);
+        flex-direction: column;
+    }
+}

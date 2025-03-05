@@ -25,7 +25,17 @@
         color: $primary_color;
     }
 
-    .price {
+    .selectQutity {
+        padding: 0 6px 0 6px ;
+        height: 36px;
+        font-size: 12px;
+        color: $thrid_color;
+        border-color: #e1e1e1;
+        margin-right: 10px;
+        outline: none;
+    }
+
+    .price  {
         color: $thrid_color;
         display: inline-block;
         margin-top: 10px;
@@ -46,5 +56,6 @@
         right: 12px;
         opacity: 6;
         visibility: visible;
+        cursor: pointer;
     }
 }

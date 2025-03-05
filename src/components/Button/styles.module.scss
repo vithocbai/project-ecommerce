@@ -1,8 +1,8 @@
 @import '@styles/mixin.module.scss';
 @import '@styles/variable.module.scss';
 
-.actionBtn {
-    @include btn(175px, 42px, $primary_color, 3px);
+.actionBtn, .actionBtnWhite  {
+    @include btn(100%, 42px, $primary_color, 3px);
     cursor: pointer;
 
     &:hover {
@@ -14,6 +14,14 @@
     &:hover .actionLink {
         color: #333333;
     }
+}
+
+.actionBtnWhite {
+    @include btn(100%, 42px, $white_color, 3px);
+}
+
+.actionBtn-width175 {
+    @include btn(175px, 41px, $primary_color, 3px);
 }
 
 .actionBtn-width160 {
