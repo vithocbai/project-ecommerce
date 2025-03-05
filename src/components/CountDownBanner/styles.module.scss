@@ -31,5 +31,6 @@
 
     .buyNow {
         margin-top: 10px;
+        @include btn(160px, 38px, 3px);
     }
 }

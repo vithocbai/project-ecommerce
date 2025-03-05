@@ -1,36 +1,79 @@
 @import '@styles/mixin.module.scss';
 @import '@styles/variable.module.scss';
 
-.actionBtn, .actionBtnWhite  {
-    @include btn(100%, 42px, $primary_color, 3px);
+// .actionBtn,
+// .actionBtnWhite {
+//     @include btn(100%, 42px, $primary_color, 3px);
+//     cursor: pointer;
+
+//     &:hover {
+//         transition: background-color 200ms linear;
+//         background-color: #ffffff00;
+//         border: 1px solid $primary_color;
+//     }
+
+//     &:hover .actionLink {
+//         color: #333333;
+//     }
+// }
+
+// .actionBtnWhite {
+//     @include btn(100%, 42px, $white_color, 3px);
+// }
+
+// .actionBtn-width175 {
+//     @include btn(175px, 41px, $primary_color, 3px);
+// }
+
+// .actionBtn-width160 {
+//     @include btn(160px, 37px, $primary_color, 3px);
+// }
+
+// .actionBtn-width167 {
+//     @include btn(167px, 41px, $white_color, 3px);
+//     border: 1px solid $primary_color;
+//     &:hover {
+//         background-color: $primary_color;
+//     }
+
+//     &:hover .actionLink {
+//         color: $white_color;
+//     }
+
+//     .actionLink {
+//         color: $primary_color;
+//     }
+// }
+
+.btn {
+    @include btn(100%, 100%, 3px);
     cursor: pointer;
+    border: 1px solid $primary_color;
 
     &:hover {
         transition: background-color 200ms linear;
         background-color: #ffffff00;
-        border: 1px solid $primary_color;
     }
 
     &:hover .actionLink {
-        color: #333333;
+        color: $primary_color;
     }
 }
-
-.actionBtnWhite {
-    @include btn(100%, 42px, $white_color, 3px);
+.actionLink {
+    color: $white_color;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 400;
+    fill: #fff;
 }
 
-.actionBtn-width175 {
-    @include btn(175px, 41px, $primary_color, 3px);
+.primary {
+    background-color: $primary_color;
 }
 
-.actionBtn-width160 {
-    @include btn(160px, 37px, $primary_color, 3px);
-}
+.default {
+    background-color: $white_color;
 
-.actionBtn-width167 {
-    @include btn(167px, 41px, $white_color, 3px);
-    border: 1px solid $primary_color;
     &:hover {
         background-color: $primary_color;
     }
@@ -38,16 +81,7 @@
     &:hover .actionLink {
         color: $white_color;
     }
-
     .actionLink {
         color: $primary_color;
     }
-}
-
-.actionLink {
-    color: $white_color;
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 400;
-    fill: #fff;
 }

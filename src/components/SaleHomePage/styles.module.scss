@@ -29,7 +29,12 @@
         margin-bottom: 20px;
     }
 
-    & .mtBtn {
+    & .btnRead {
+        @include btn(167px, 42px, 3px);
+        margin: 0 auto;
+    }
+
+    & .mtImage {
         margin-top: 20px;
     }
 

@@ -14,5 +14,6 @@
     .groupBtn {
         @include flex_box_custom(normal,center,10px);
         flex-direction: column;
+        height: 95px;
     }
 }

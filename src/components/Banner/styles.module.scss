@@ -32,6 +32,7 @@
     line-height: 25px;
 }
 
-.btn {
+.btnbanner {
     margin-top: 38px;
+    @include btn(175px, 41px, 3px);
 }

@@ -1,16 +1,35 @@
-import InputCommon from "@components/InputCommon/InputCommon";
+import InputCommon from '@components/InputCommon/InputCommon'
 import styles from './styles.module.scss'
-import Button from "@components/Button/Button";
+import Button from '@components/Button/Button'
 
 function Login() {
-    const {container, title, signIn, inputCheck ,login, formLabel, lostPass, lostPassLink} = styles
-    return (  
+    const {
+        container,
+        title,
+        signIn,
+        inputCheck,
+        login,
+        formLabel,
+        lostPass,
+        lostPassLink
+    } = styles
+    return (
         <div className={container}>
             <div className={title}>
-                <a href="" className={signIn}>Sign In</a>
+                <a href="" className={signIn}>
+                    Sign In
+                </a>
             </div>
-            <InputCommon label={"Username or email"} type={'email'} isRequred={true}/>
-            <InputCommon label={"Password "} type={'password'} isRequred={true}/>
+            <InputCommon
+                label={'Username or email'}
+                type={'email'}
+                isRequred={true}
+            />
+            <InputCommon
+                label={'Password '}
+                type={'password'}
+                isRequred={true}
+            />
 
             <div>
                 <input type="checkbox" className={inputCheck} />
@@ -19,17 +38,16 @@ function Login() {
                 </label>
             </div>
 
-            <button type="submit" className={login}>
-                Login
-            </button>
-        
+            <div style={{ height: '40px', marginTop: '20px' }}>
+                <Button content="LOGIN" primary />
+            </div>
+
             <p className={lostPass}>
                 <a href="" className={lostPassLink}>
                     Lost your password?
                 </a>
             </p>
-
         </div>
-    );
+    )
 }
-export default Login;
+export default Login

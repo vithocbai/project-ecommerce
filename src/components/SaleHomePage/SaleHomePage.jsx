@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from 'react'
 import useTranslateXImage from '@/hooks/useTranslateXImage'
 
 function SaleHomePage() {
-    const { container, middleContent, title, desc, mtBtn, image } = styles
+    const { container, middleContent, title, desc, btnRead, mtImage, image } = styles
     const { translateXPositon } = useTranslateXImage()
 
     return (
@@ -28,12 +28,12 @@ function SaleHomePage() {
                     Libero sed faucibus facilisis fermentum. Est nibh sed massa
                     sodales.
                 </p>
-                <div>
-                    <Button content={'Read more'} size="width167" />
+                <div className={btnRead}>
+                    <Button content={'Read more'} primary={false}/>
                 </div>
             </div>
             <div
-                className={mtBtn}
+                className={mtImage}
                 style={{
                     transform: `translateX(-${translateXPositon}px)`,
                     transition: 'transform 0.3s linear'

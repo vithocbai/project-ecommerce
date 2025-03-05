@@ -13,7 +13,7 @@ function CountDownBanner() {
                 </div>
                 <h2 className={title}>The classics make a comeback</h2>
                     <div className={buyNow}>
-                        <Button content={'Buy now'} size="width160" />
+                        <Button content={'Buy now'} primary/>
                     </div>
             </div>
         </div>

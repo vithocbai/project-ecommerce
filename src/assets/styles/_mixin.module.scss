@@ -9,14 +9,17 @@
     gap: $gap;
 }
 
-@mixin btn($w, $h, $bgColor, $radius) {
+
+@mixin btn($w: auto, $h: auto, $radius) {
     width: $w;
     height: $h;
-    background-color: $bgColor;
     border-radius: $radius;
     outline: none;
     border: none;
+    cursor: pointer;
+    transition: background-color 200ms linear;
 }
+
 
 // @mixin grid_column($column, $y, $gap) {
 //     display: grid;

@@ -26,7 +26,7 @@ function Cart({ isCart }) {
                     <span>$119.99</span>
                 </div>
                 <div className={groupBtn}>
-                    <Button content={'VIEW CART'} />
+                    <Button content={'VIEW CART'} primary/>
                     <Button content={'CHECKOUT'} />
                 </div>
             </div>

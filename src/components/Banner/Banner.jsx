@@ -1,8 +1,9 @@
 import Button from '../Button/Button'
 import styles from './styles.module.scss'
 
+
 function Banner() {
-    const { container, content, heading, desc, btn } = styles
+    const { container, content, heading, desc, btnbanner} = styles
     return (
         <>
             <div className={container}>
@@ -12,8 +13,8 @@ function Banner() {
                         Make yours celebrations even more special this years
                         with beautiful.
                     </p>
-                    <div className={btn}>
-                        <Button content={'Go to shop'} size="width175"/>
+                    <div className={btnbanner}>
+                        <Button content={'Go to shop'} primary/>
                     </div>
                 </div>
             </div>

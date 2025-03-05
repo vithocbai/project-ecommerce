@@ -19,7 +19,7 @@ function Compare() {
                 />
                 <ProductItem isCart={false}/>
             </div>
-            <div>
+            <div style={{height: '43px'}}>
                 <Button content="VIEW COMPARE" />
             </div>
         </div>
