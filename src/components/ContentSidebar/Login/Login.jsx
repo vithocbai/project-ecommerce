@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { ToastContext } from '@/context/ToastProvider'
+import register from '@/apis/authServices'
 
 function Login() {
     const {
@@ -19,7 +20,9 @@ function Login() {
     } = styles
 
     const [isRegister, setIsRegister] = useState(false)
-    const {toast} = useContext(ToastContext)
+    const { toast } = useContext(ToastContext)
+    // ngăn chặn call api khi spam
+    const [isLoading, setIsLoading] = useState()
 
     const formik = useFormik({
         initialValues: {
@@ -34,12 +37,37 @@ function Login() {
             password: Yup.string()
                 .required('Password is Required')
                 .min(6, 'Password must be at 6 characters'),
-            confirmPassword: Yup.string()
-                .required('Confirm Password is required')
-                .oneOf([Yup.ref('password')], 'Passwords must match')
+            confirmPassword: isRegister
+                ? Yup.string()
+                      .required('Confirm  Password is required')
+                      .oneOf([Yup.ref('password')], 'Password must match')
+                : Yup.string().notRequired()
         }),
-        onSubmit: (values) => {
-            console.log('Form Data:', values)
+        onSubmit: async (values) => {
+            if (isLoading) return
+
+            const formData = { ...values }
+            if (!isRegister) {
+                delete formData.confirmPassword
+            }
+
+            setIsLoading(true)
+            const data = {
+                username: formData.email,
+                password: formData.password
+            }
+            if (isRegister) {
+                await register(data)
+                    .then((res) => {
+                        console.log(res)
+                        toast.success(res.response.data.message)
+                        setIsLoading(false)
+                    })
+                    .catch((res) => {
+                        toast.error(res.response.data.message)
+                        setIsLoading(false)
+                    })
+            }
         }
     })
 
@@ -90,12 +118,16 @@ function Login() {
                 </div>
 
                 <div style={{ height: '100%' }}>
-                    <button className={submitForm} type="submit" onClick={() => toast.success("Lorem ipsum dolor")}>
-                        {isRegister ? 'SIGN UP' : 'LOGIN'}
+                    <button className={submitForm} type="submit">
+                        {isLoading
+                            ? 'loading'
+                            : isRegister
+                            ? 'SIGN UP'
+                            : 'LOGIN'}
                     </button>
                     <button
+                        type="button"
                         className={submitForm}
-                        type="submit"
                         onClick={() => handleToggle()}
                     >
                         {isRegister

@@ -30,6 +30,7 @@ function InputCommon({ label, type, isRequred = false, ...props }) {
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values[id]}
+        
                     />
                     {isPassword && (
                         <div
