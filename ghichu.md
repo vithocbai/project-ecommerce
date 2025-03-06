@@ -41,3 +41,5 @@
 
 ## trong react js có framWork là Formik dùng để quản lý state submit - và yup để xác thực dữ liệu như các rule 
 -- pnpm add formik yup 
+
+## React-toastify pnpm i react-toastify 

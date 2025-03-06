@@ -3,6 +3,8 @@ import styles from './styles.module.scss'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useState } from 'react'
+import { useContext } from 'react'
+import { ToastContext } from '@/context/ToastProvider'
 
 function Login() {
     const {
@@ -17,6 +19,7 @@ function Login() {
     } = styles
 
     const [isRegister, setIsRegister] = useState(false)
+    const {toast} = useContext(ToastContext)
 
     const formik = useFormik({
         initialValues: {
@@ -87,7 +90,7 @@ function Login() {
                 </div>
 
                 <div style={{ height: '100%' }}>
-                    <button className={submitForm} type="submit">
+                    <button className={submitForm} type="submit" onClick={() => toast.success("Lorem ipsum dolor")}>
                         {isRegister ? 'SIGN UP' : 'LOGIN'}
                     </button>
                     <button

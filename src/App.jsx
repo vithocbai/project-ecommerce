@@ -8,27 +8,30 @@ import routers from '@/routers/routers'
 import { Suspense } from 'react'
 import { SideBarProvider } from './context/SideBarProvider'
 import Sidebar from '@components/Sidebar/Sidebar'
+import ToastProvider from './context/ToastProvider'
 
 function App() {
     return (
-        <SideBarProvider>
-            <Sidebar />
-            <BrowserRouter>
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Routes>
-                        {routers.map((item, index) => {
-                            return (
-                                <Route
-                                    path={item.path}
-                                    element={<item.components />}
-                                    key={index}
-                                />
-                            )
-                        })}
-                    </Routes>
-                </Suspense>
-            </BrowserRouter>
-        </SideBarProvider>
+        <ToastProvider>
+            <SideBarProvider>
+                <Sidebar />
+                <BrowserRouter>
+                    <Suspense fallback={<div>Loading...</div>}>
+                        <Routes>
+                            {routers.map((item, index) => {
+                                return (
+                                    <Route
+                                        path={item.path}
+                                        element={<item.components />}
+                                        key={index}
+                                    />
+                                )
+                            })}
+                        </Routes>
+                    </Suspense>
+                </BrowserRouter>
+            </SideBarProvider>
+        </ToastProvider>
     )
 }
 export default App
