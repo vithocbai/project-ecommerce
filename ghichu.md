@@ -35,7 +35,7 @@
 
 ## Làm scrollImage and FixedHeader
 
-## nợ đến video29  ngày 5/3 
+## nợ đến video31  ngày 5/3 
 
 ## sibar ở nhiều trang lên cần tạo ra 1 context 
 
