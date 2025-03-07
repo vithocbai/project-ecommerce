@@ -4,18 +4,21 @@ import { LiaEyeSolid } from 'react-icons/lia'
 import { LiaEyeSlashSolid } from 'react-icons/lia'
 
 function InputCommon({ label, type, isRequred = false, ...props }) {
-    const { formik, id } = props
     const { container, formLabel, boxInput, formInput, boxIcon, errorMessage } =
         styles
+    const { formik, id } = props
+
     const [isShowPass, setIsShowPass] = useState(false)
     const isPassword = type === 'password'
     const handleShowPass = () => {
         setIsShowPass(!isShowPass)
     }
+    
     const isShowTextPass = isShowPass && isPassword ? 'text' : type
 
-    const isError = formik.errors[id] && formik.touched[id]
+    const isErr = formik.errors[id] && formik.touched[id]
     const message = formik.errors[id]
+
     return (
         <div className={container}>
             <div>
@@ -25,13 +28,14 @@ function InputCommon({ label, type, isRequred = false, ...props }) {
                 <div className={boxInput}>
                     <input
                         className={formInput}
-                        type={isShowTextPass}
                         {...props}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values[id]}
-        
+                        type={isShowTextPass}
                     />
+                    {isErr && <div className={errorMessage}>{message}</div>}
+
                     {isPassword && (
                         <div
                             className={boxIcon}
@@ -44,7 +48,6 @@ function InputCommon({ label, type, isRequred = false, ...props }) {
                             )}
                         </div>
                     )}
-                    {isError && <div className={errorMessage}>{message}</div>}
                 </div>
             </div>
         </div>

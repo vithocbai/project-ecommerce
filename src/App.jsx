@@ -15,7 +15,7 @@ function App() {
         <ToastProvider>
             <SideBarProvider>
                 <Sidebar />
-                <BrowserRouter>
+                <BrowserRouter basename="/project-ecommerce">
                     <Suspense fallback={<div>Loading...</div>}>
                         <Routes>
                             {routers.map((item, index) => {

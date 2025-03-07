@@ -1,11 +1,13 @@
 import InputCommon from '@components/InputCommon/InputCommon'
 import styles from './styles.module.scss'
-import { useFormik } from 'formik'
-import * as Yup from 'yup'
 import { useState } from 'react'
 import { useContext } from 'react'
 import { ToastContext } from '@/context/ToastProvider'
-import register from '@/apis/authServices'
+import * as Yup from 'yup'
+import { useFormik } from 'formik'
+import { register, login, getInfo } from '@/apis/authServices'
+import Cookies from 'js-cookie'
+import { useEffect } from 'react'
 
 function Login() {
     const {
@@ -20,9 +22,11 @@ function Login() {
     } = styles
 
     const [isRegister, setIsRegister] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
     const { toast } = useContext(ToastContext)
-    // ngăn chặn call api khi spam
-    const [isLoading, setIsLoading] = useState()
+    useEffect(() => {
+        getInfo()
+    }, [])
 
     const formik = useFormik({
         initialValues: {
@@ -32,39 +36,47 @@ function Login() {
         },
         validationSchema: Yup.object({
             email: Yup.string()
-                .email('Invalid email')
-                .required('Email is required'),
+                .required('Email is required ')
+                .email('Invalid email'),
             password: Yup.string()
-                .required('Password is Required')
-                .min(6, 'Password must be at 6 characters'),
-            confirmPassword: isRegister
-                ? Yup.string()
-                      .required('Confirm  Password is required')
-                      .oneOf([Yup.ref('password')], 'Password must match')
-                : Yup.string().notRequired()
+                .required('Password is required')
+                .min(3, 'Password must be 3 charact'),
+            confirmPassword: Yup.string().oneOf(
+                [Yup.ref('password')],
+                'Password must match'
+            )
         }),
+
         onSubmit: async (values) => {
             if (isLoading) return
 
-            const formData = { ...values }
-            if (!isRegister) {
-                delete formData.confirmPassword
-            }
-
             setIsLoading(true)
-            const data = {
-                username: formData.email,
-                password: formData.password
-            }
+            const { email: username, password } = values
+
             if (isRegister) {
-                await register(data)
+                await register({ username, password })
                     .then((res) => {
-                        console.log(res)
-                        toast.success(res.response.data.message)
+                        toast.success(res.data.message)
                         setIsLoading(false)
                     })
-                    .catch((res) => {
-                        toast.error(res.response.data.message)
+                    .catch((err) => {
+                        toast.error(err.response.data.message)
+                        setIsLoading(false)
+                    })
+            }
+
+            if (!isRegister) {
+                await login({ username, password })
+                    .then((res) => {
+                        const { id, token, refreshToken } = res.data
+                        Cookies.set('token', token)
+                        Cookies.set('refreshToken', refreshToken)
+
+                        toast.success(res.data.message)
+                        setIsLoading(false)
+                    })
+                    .catch((err) => {
+                        toast.error(err.response.data.message)
                         setIsLoading(false)
                     })
             }
@@ -91,7 +103,7 @@ function Login() {
                     isRequred
                     formik={formik}
                 />
-
+                {formik.errors.email && formik.touched.email}
                 <InputCommon
                     id="password"
                     label="Password "
@@ -127,8 +139,8 @@ function Login() {
                     </button>
                     <button
                         type="button"
-                        className={submitForm}
                         onClick={() => handleToggle()}
+                        className={submitForm}
                     >
                         {isRegister
                             ? 'Already have an account'
