@@ -7,19 +7,6 @@ const axiosClient = axios.create({
     headers: { 'Content-Type': 'application/json' }
 })
 
-// axiosClient.interceptors.request.use(
-//     async (config) => {
-//         const token = Cookies.get('token')
-//         if (token) {
-//             config.headers.Authorization = `Bearer ${token}`
-//         }
-//         return config
-//     },
-//     (err) => {
-//         return Promise.reject(err)
-//     }
-// )
-
 axiosClient.interceptors.request.use(
     async (config) => {
         const token = Cookies.get('token')

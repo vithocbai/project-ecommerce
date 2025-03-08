@@ -85,4 +85,13 @@
         opacity: 1;
         transform: scale(1);
     }
+
+    & .subMenu {
+        position: absolute;
+        left: 0;
+        bottom: -60px;
+        width: 100%;
+        padding: 20px 20px;
+        background-color: #fff;
+    }
 }

@@ -8,6 +8,8 @@ import { useFormik } from 'formik'
 import { register, login, getInfo } from '@/apis/authServices'
 import Cookies from 'js-cookie'
 import { useEffect } from 'react'
+import { SideBarContext } from '@/context/SideBarProvider'
+import { StoreContext } from '@/context/StoreProvider'
 
 function Login() {
     const {
@@ -24,6 +26,9 @@ function Login() {
     const [isRegister, setIsRegister] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const { toast } = useContext(ToastContext)
+    const { setIsOpen } = useContext(SideBarContext)
+    const { setUserId } = useContext(StoreContext)
+
     useEffect(() => {
         getInfo()
     }, [])
@@ -60,7 +65,10 @@ function Login() {
                         setIsLoading(false)
                     })
                     .catch((err) => {
-                        toast.error(err.response.data.message)
+                        console.error('Register Error:', err.response?.data)
+                        toast.error(
+                            err.response?.data?.message || 'Registration failed'
+                        )
                         setIsLoading(false)
                     })
             }
@@ -68,15 +76,23 @@ function Login() {
             if (!isRegister) {
                 await login({ username, password })
                     .then((res) => {
+                        // console.log('Login Success:', res.data) // Log để kiểm tra dữ liệu trả về
                         const { id, token, refreshToken } = res.data
+                        setUserId(id)
                         Cookies.set('token', token)
                         Cookies.set('refreshToken', refreshToken)
+                        Cookies.set('userId', id)
 
-                        toast.success(res.data.message)
+                        toast.success(
+                            res.data?.message || 'Đăng nhập thành công!'
+                        )
                         setIsLoading(false)
+                        setIsOpen(false)
                     })
                     .catch((err) => {
-                        toast.error(err.response.data.message)
+                        toast.error(
+                            err.response?.data?.message || 'Login failed'
+                        )
                         setIsLoading(false)
                     })
             }
@@ -134,7 +150,7 @@ function Login() {
                         {isLoading
                             ? 'loading'
                             : isRegister
-                            ? 'SIGN UP'
+                            ? 'SIGN UP '
                             : 'LOGIN'}
                     </button>
                     <button
