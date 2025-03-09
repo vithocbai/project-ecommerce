@@ -1,0 +1,42 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    margin-top: 83px;
+
+    .breadcrumbsBox {
+        @include flex_box_custom(center, space-between, 0);
+        color: $primary_color;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .breadcrumbs {
+        @include flex_box_custom(center, flex-start, 8px);
+        color: $second_color;
+    }
+
+    .homeNav {
+        text-decoration: none;
+        color: $second_color;
+    }
+
+    .breadcrumbsLink {
+        color: $primary_color;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .backHome {
+        cursor: pointer;
+        color: $second_color;
+    }
+
+    .containerBanner {
+        background-image: url('https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Background.jpeg');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+        height: 278px;
+    }
+}

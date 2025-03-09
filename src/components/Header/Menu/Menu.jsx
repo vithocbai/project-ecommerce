@@ -4,16 +4,32 @@ import { SideBarContext } from '@/context/SideBarProvider'
 import { StoreContext } from '@/context/StoreProvider'
 import { useState } from 'react'
 import Cookies from 'js-cookie'
+import { useNavigate } from 'react-router-dom'
 
 function Menu({ content, href }) {
     const { menu, subMenu } = styles
     const { setIsOpen, setType } = useContext(SideBarContext)
     const { userInfo, setUserInfoLogOut } = useContext(StoreContext)
     const [isShowSubMenu, setIsShowSubMenu] = useState(false)
-    const handleClickShowLogin = () => {
-        if (content === 'Sign In' && !userInfo) {
+    const navigate = useNavigate()
+
+    const handleNavigate = (path) => {
+        navigate(path)
+    }
+
+    const handleShowLogin = () => {
+        if (!userInfo) {
             setIsOpen(true)
             setType('login')
+        }
+    }
+
+    const handleClickShowLogin = () => {
+        if (content === 'Sign In') {
+            handleShowLogin()
+        }
+        if (content == 'Our Shop') {
+            handleNavigate('shop')
         }
     }
 
