@@ -12,8 +12,8 @@ const CountdownTimer = ({ targetDate }) => {
             timeLeft = {
                 Days: Math.floor(difference / (1000 * 60 * 60 * 24)),
                 Hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                Minutes: Math.floor((difference / (1000 * 60)) % 60),
-                Seconds: Math.floor((difference / 1000) % 60)
+                Mins: Math.floor((difference / (1000 * 60)) % 60),
+                Secs: Math.floor((difference / 1000) % 60)
             }
         }
         return timeLeft

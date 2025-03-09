@@ -37,7 +37,7 @@ function OurShop() {
                             &lt; Return to previous page
                         </div>
                     </div>
-
+                
                     <Banner />
                 </div>
             </MainLayout>

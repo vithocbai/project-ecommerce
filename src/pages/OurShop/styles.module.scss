@@ -31,12 +31,34 @@
         cursor: pointer;
         color: $second_color;
     }
+}
 
-    .containerBanner {
-        background-image: url('https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Background.jpeg');
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-        height: 278px;
+.containerBanner {
+    background-image: url('https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Background.jpeg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    height: 278px;
+
+    .bannerContent {
+        @include flex_box_custom(center, center, 20px);
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .countDowntBox span {
+        font-size: 18px;
+    }
+
+    .title {
+        font-size: 28px;
+        line-height: 40px;
+        text-transform: capitalize;
+        font-weight: 400;
+        color: $detail_color;
+    }
+
+    .btnBuy {
+        @include btn(160px, 37px, 3px);
     }
 }
