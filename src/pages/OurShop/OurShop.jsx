@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import Banner from '@pages/components/Banner'
 import OurShopProvider from '@/context/OurShopProvider'
 import Filter from '../components/Filter'
+import ListProduct from '../components/ListProduct'
 
 function OurShop() {
     const {
@@ -20,7 +21,7 @@ function OurShop() {
     const navigateHome = () => {
         navigate(-1)
     }
-    
+
     return (
         <OurShopProvider>
             <MyHeader />
@@ -41,9 +42,14 @@ function OurShop() {
                         </div>
                     </div>
 
-                    <Banner />
+                    <div>
+                        <Banner />
+                    </div>
 
-                    <Filter />
+                    <div>
+                        <Filter />
+                        <ListProduct />
+                    </div>
                 </div>
             </MainLayout>
         </OurShopProvider>

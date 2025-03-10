@@ -4,7 +4,8 @@ import styles from './styles.module.scss'
 import ProductItem from '@components/ProductItem/ProductItem'
 
 function HeadingListProduct({ datas }) {
-    const { container, containerItem, flex } = styles
+    const { container, containerItem } = styles
+    console.log(datas)
     return (
         <>
             <MainLayout>
