@@ -3,6 +3,8 @@ import MainLayout from '@components/Layout/Layout'
 import styles from './styles.module.scss'
 import { useNavigate } from 'react-router-dom'
 import Banner from '@pages/components/Banner'
+import OurShopProvider from '@/context/OurShopProvider'
+import Filter from '../components/Filter'
 
 function OurShop() {
     const {
@@ -18,8 +20,9 @@ function OurShop() {
     const navigateHome = () => {
         navigate(-1)
     }
+    
     return (
-        <>
+        <OurShopProvider>
             <MyHeader />
             <MainLayout>
                 <div className={container}>
@@ -37,11 +40,13 @@ function OurShop() {
                             &lt; Return to previous page
                         </div>
                     </div>
-                
+
                     <Banner />
+
+                    <Filter />
                 </div>
             </MainLayout>
-        </>
+        </OurShopProvider>
     )
 }
 
