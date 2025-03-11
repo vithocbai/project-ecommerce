@@ -98,6 +98,17 @@
         margin-bottom: 6px;
     }
 
+    .activeSize {
+        border: 1px solid #333;
+    }
+
+    .clearSize {
+        text-align: center;
+        font-size: 12px;
+        margin: 5px 10px;
+        color: $detail_color;
+    }
+
     .brand {
         font-size: 14px;
         color: $second_color;

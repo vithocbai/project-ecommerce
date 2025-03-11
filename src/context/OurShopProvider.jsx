@@ -25,6 +25,7 @@ function OurShopProvider({ children }) {
     const [showId, setShowId] = useState('8')
     const [isShowGrid, setIsShowGrid] = useState(true)
     const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const value = {
         sortOption,
@@ -33,7 +34,8 @@ function OurShopProvider({ children }) {
         setShowId,
         setIsShowGrid,
         isShowGrid,
-        products
+        products,
+        loading
     }
 
     useEffect(() => {
@@ -42,12 +44,15 @@ function OurShopProvider({ children }) {
             page: 1,
             limit: showId
         }
+        setLoading(true)
         getProduct(query)
             .then((res) => {
                 setProducts(res.contents)
+                setLoading(false)
             })
             .catch((err) => {
                 console.log(err)
+                setLoading(false)
             })
     }, [sortId, showId])
 

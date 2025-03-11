@@ -5,7 +5,6 @@ import ProductItem from '@components/ProductItem/ProductItem'
 
 function HeadingListProduct({ datas }) {
     const { container, containerItem } = styles
-    console.log(datas)
     return (
         <>
             <MainLayout>
@@ -23,7 +22,6 @@ function HeadingListProduct({ datas }) {
                                     title={data.name}
                                     price={data.price}
                                     details={data}
-                                
                                 />
                             )
                         })}

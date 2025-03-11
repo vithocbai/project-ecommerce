@@ -7,6 +7,7 @@ import cls from 'classnames'
 import Button from '@components/Button/Button'
 import { useContext } from 'react'
 import { OurShopContext } from '@/context/OurShopProvider'
+import { useState } from 'react'
 
 function ProductItem({
     src,
@@ -16,7 +17,6 @@ function ProductItem({
     details,
     isHomePage = true
 }) {
-    const { isShowGrid } = useContext(OurShopContext)
     const {
         containerGrid,
         boxImg,
@@ -29,13 +29,27 @@ function ProductItem({
         priceProduct,
         boxSize,
         size,
+        activeSize,
+        clearSize,
         textCenter,
         brand,
         groupBtn
     } = styles
 
+    const { isShowGrid } = useContext(OurShopContext)
+
+    const [isChooseSize, setIsChooseSize] = useState('')
+
+    const handleChooseSize = (size) => {
+        setIsChooseSize(size)
+    }
+
+    const removeSize = () => {
+        setIsChooseSize('')
+    }
+    
     return (
-        <div className={!isShowGrid ? containerGrid : ''}>
+        <div className={!isShowGrid ? containerGrid : ' '}>
             <div className={boxImg}>
                 <img className={img} src={src} alt="" />
                 <img className={imgWhenHover} src={prevSrc} alt="" />
@@ -59,11 +73,22 @@ function ProductItem({
                     <div className={boxSize}>
                         {details.size.map((data, index) => {
                             return (
-                                <div key={index} className={size}>
+                                <div
+                                    key={index}
+                                    className={cls(size, {
+                                        [activeSize]: data.name === isChooseSize
+                                    })}
+                                    onClick={() => handleChooseSize(data.name)}
+                                >
                                     {data.name}
                                 </div>
                             )
                         })}
+                    </div>
+                )}
+                {isChooseSize && (
+                    <div className={clearSize} onClick={removeSize}>
+                        clear
                     </div>
                 )}
                 <div
