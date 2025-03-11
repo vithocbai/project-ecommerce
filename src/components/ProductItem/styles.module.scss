@@ -1,6 +1,18 @@
 @import '@styles/variable.module.scss';
 @import '@styles/mixin.module.scss';
 
+.containerGrid {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 68%;
+    height: auto;
+
+    & .boxImg {
+        height: 100%;
+    }
+}
+
 .boxImg {
     position: relative;
     width: 100%;
@@ -32,6 +44,7 @@
         right: 20px;
         transition: opacity 500ms, right 300ms;
     }
+
     .iconFncWhenShow {
         position: absolute;
         right: 0px;
@@ -66,5 +79,42 @@
     .priceProduct {
         font-size: 14px;
         color: $thrid_color;
+    }
+
+    .boxSize {
+        @include flex_box_custom(center, center, 10px);
+        text-align: center;
+    }
+
+    .size {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        background-color: #fff;
+        border: 1px solid #e1e1e1;
+        cursor: pointer;
+        font-size: 10px;
+        color: $thrid_color;
+        margin-bottom: 6px;
+    }
+
+    .brand {
+        font-size: 14px;
+        color: $second_color;
+        margin: 10px 0 2px;
+    }
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.groupBtn {
+    @include flex_box_custom(normal, center, 10px);
+    @include btn(141px, 34px, 4px);
+    margin: 10px auto 0;
+
+    & a {
+        font-size: 12px;
     }
 }

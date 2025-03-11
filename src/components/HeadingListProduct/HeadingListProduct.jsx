@@ -22,6 +22,8 @@ function HeadingListProduct({ datas }) {
                                     prevSrc={data.images[1]}
                                     title={data.name}
                                     price={data.price}
+                                    details={data}
+                                
                                 />
                             )
                         })}

@@ -127,3 +127,9 @@
     gap: 16px;
     margin-top: 16px;
 }
+
+.containerProductList {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    row-gap: 20px;
+}

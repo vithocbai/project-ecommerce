@@ -10,6 +10,7 @@ function Filter() {
 
     const { sortOption, showOption, setSortId, setShowId, setIsShowGrid } =
         useContext(OurShopContext)
+  
     const getValueSelect = (value, type) => {
         if (type === 'sort') {
             setSortId(value)
@@ -25,6 +26,7 @@ function Filter() {
             setIsShowGrid(false)
         }
     }
+    
     return (
         <div className={containerFilter}>
             <div className={filterLeft}>

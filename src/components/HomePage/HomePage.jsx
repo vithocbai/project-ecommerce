@@ -12,11 +12,16 @@ import SaleHomePage from '@components/SaleHomePage/SaleHomePage'
 import MyFooter from '@components/Footer/Footer'
 
 function HomePage() {
-    const [listProduct,setListProduct] = useState([])
+    const [listProduct, setListProduct] = useState([])
 
     useEffect(() => {
-        getProduct().then(res => setListProduct(res.contents))
-    }, [])    
+        const query = {
+            sortType: 0,
+            page: 1,
+            limit: 10
+        }
+        getProduct(query).then((res) => setListProduct(res.contents))
+    }, [])
 
     const { container } = styles
     return (
@@ -26,8 +31,8 @@ function HomePage() {
                 <Banner />
                 <Info />
                 <AdvanceHeading />
-                <HeadingListProduct datas={listProduct.slice(0,2)}/>
-                <PupularProduct datas={listProduct.slice(2, 10)}/>
+                <HeadingListProduct datas={listProduct.slice(0, 2)} />
+                <PupularProduct datas={listProduct.slice(2, 10)} />
                 <SaleHomePage />
                 <MyFooter />
             </div>
