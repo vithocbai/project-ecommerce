@@ -8,6 +8,7 @@ import Button from '@components/Button/Button'
 import { useContext } from 'react'
 import { OurShopContext } from '@/context/OurShopProvider'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 function ProductItem({
     src,
@@ -36,9 +37,17 @@ function ProductItem({
         groupBtn
     } = styles
 
-    const { isShowGrid } = useContext(OurShopContext)
-
+    const ourShopStore = useContext(OurShopContext)
     const [isChooseSize, setIsChooseSize] = useState('')
+    const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid)
+
+    useEffect(() => {
+        if (isHomePage) {
+            setIsShowGrid(true)
+        } else {
+            setIsShowGrid(ourShopStore?.isShowGrid)
+        }
+    }, [ourShopStore?.isShowGrid, isHomePage])
 
     const handleChooseSize = (size) => {
         setIsChooseSize(size)
@@ -47,7 +56,7 @@ function ProductItem({
     const removeSize = () => {
         setIsChooseSize('')
     }
-    
+
     return (
         <div className={!isShowGrid ? containerGrid : ' '}>
             <div className={boxImg}>
