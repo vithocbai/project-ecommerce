@@ -133,3 +133,8 @@
     grid-template-columns: repeat(2, minmax(100px, 1fr));
     row-gap: 20px;
 }
+
+.btnMore {
+    @include btn(180px,37px,5px);
+    margin: 50px auto;
+}

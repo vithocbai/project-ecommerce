@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import styles from './styles.module.scss'
 
 function Button({ content, primary }) {
-    const { btn, actionLink } = styles
+    const { btn } = styles
     return (
         <>
             <button
@@ -13,9 +13,7 @@ function Button({ content, primary }) {
                     { [styles.default]: !primary }
                 )}
             >
-                <a href="" className={actionLink}>
-                    {content}
-                </a>
+                {content}
             </button>
         </>
     )

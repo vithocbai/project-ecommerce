@@ -6,6 +6,7 @@ import Banner from '@pages/components/Banner'
 import OurShopProvider from '@/context/OurShopProvider'
 import Filter from '../components/Filter'
 import ListProduct from '../components/ListProduct'
+import MyFooter from '@components/Footer/Footer'
 
 function OurShop() {
     const {
@@ -52,6 +53,7 @@ function OurShop() {
                     </div>
                 </div>
             </MainLayout>
+            <MyFooter />
         </OurShopProvider>
     )
 }
