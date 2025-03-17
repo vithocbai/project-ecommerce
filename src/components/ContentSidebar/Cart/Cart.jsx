@@ -9,7 +9,7 @@ import { SideBarContext } from '@/context/SideBarProvider'
 function Cart({ isCart }) {
     const { container, total, groupBtn } = styles
     const { listProductCart } = useContext(SideBarContext)
-    console.log(listProductCart)
+
     return (
         <div className={container}>
             <div>
@@ -21,9 +21,10 @@ function Cart({ isCart }) {
                     }
                     title={'CART'}
                 />
-                {listProductCart.map((item) => {
+                {listProductCart.map((item, index) => {
                     return (
                         <ProductItem
+                            key={index}
                             isCart={false}
                             thumbProduct={item.images[0]}
                             titleProduct={item.name}
@@ -31,6 +32,8 @@ function Cart({ isCart }) {
                             sizeProduct={item.size}
                             quantityProduct={item.quantity}
                             skuProduct={item.sku}
+                            userId={item.userId}
+                            productId={item.productId}
                         />
                     )
                 })}
@@ -40,7 +43,7 @@ function Cart({ isCart }) {
                     <p className="title">SUBTOTAL:</p>
                     <span>$119.99</span>
                 </div>
-                
+
                 <div className={groupBtn}>
                     <Button content={'VIEW CART'} primary />
                     <Button content={'CHECKOUT'} />

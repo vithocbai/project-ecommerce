@@ -3,9 +3,6 @@ import { dataBoxIcons, dataMenu } from './constants'
 import Menu from './Menu/Menu'
 import styles from './styles.module.scss'
 import logo from '@icons/images/logo.png'
-import reLoad from '@icons/svgs/reLoadIcon.svg'
-import heartIcon from '@icons/svgs/heartIcon.svg'
-import cartIcon from '@icons/svgs/cartIcon.svg'
 import useScrollHandling from '@/hooks/useScrollHanding'
 import classNames from 'classnames'
 import { useEffect } from 'react'
@@ -110,7 +107,9 @@ function MyHeader() {
                                 style={{ fontSize: '22px' }}
                                 onClick={() => handleOpenSideBar('cart')}
                             />
-                            <div className={quantity}>{listProductCart.length}</div>
+                            <div className={quantity}>
+                                {listProductCart.length}
+                            </div>
                         </div>
                     </div>
                 </div>

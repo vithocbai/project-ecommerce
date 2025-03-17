@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { createContext } from 'react'
 import { getCart } from '@/apis/cartServices'
+import { useEffect } from 'react'
+import Cookies from 'js-cookie'
 
 export const SideBarContext = createContext()
 
@@ -8,6 +10,7 @@ export const SideBarProvider = ({ children }) => {
     const [isOpen, setIsOpen] = useState(false)
     const [type, setType] = useState('')
     const [listProductCart, setListProductCart] = useState([])
+    const userId = Cookies.get('userId')
 
     const handGetListProductsCart = (userId, type) => {
         if (userId && type === 'cart') {
@@ -20,6 +23,10 @@ export const SideBarProvider = ({ children }) => {
                 })
         }
     }
+
+    useEffect(() => {
+        handGetListProductsCart(userId, 'cart')
+    }, [])
 
     const value = {
         isOpen,

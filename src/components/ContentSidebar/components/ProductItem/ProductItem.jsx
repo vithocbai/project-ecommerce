@@ -1,6 +1,11 @@
 import Button from '@components/Button/Button'
 import styles from './styles.module.scss'
 import { IoCloseOutline } from 'react-icons/io5'
+import { deleteCart } from '@/apis/cartServices'
+import { useContext } from 'react'
+import { SideBarContext } from '@/context/SideBarProvider'
+import { useState } from 'react'
+import { VscLoading } from 'react-icons/vsc'
 
 function ProductItem({
     isCart,
@@ -9,7 +14,9 @@ function ProductItem({
     sizeProduct,
     quantityProduct,
     priceProduct,
-    skuProduct
+    skuProduct,
+    userId,
+    productId
 }) {
     const {
         container,
@@ -19,10 +26,44 @@ function ProductItem({
         price,
         close,
         codeProduct,
-        size
+        size,
+        loading
     } = styles
+
+    const { handGetListProductsCart } = useContext(SideBarContext)
+    const [isDelete, setIsDelete] = useState(false)
+    const [isFading, setIsFading] = useState(false)
+
+    const handleDeleteProductCart = () => {
+        setIsFading(true)
+        setTimeout(() => {
+            setIsDelete(true)
+            deleteCart({ userId, productId })
+                .then((res) => {
+                    handGetListProductsCart(userId, 'cart')
+                    setTimeout(() => {
+                        setIsDelete(false)
+                        setIsFading(false)
+                    }, 1000)
+                })
+                .catch((err) => {
+                    console.log(err)
+                    setTimeout(() => {
+                        setIsDelete(false)
+                        setIsFading(false)
+                    }, 1000)
+                })
+        }, 500)
+    }
+
     return (
-        <div className={container}>
+        <div
+            className={container}
+            style={{
+                opacity: isFading ? 0.5 : 1,
+                transition: 'opacity 0.3s ease'
+            }}
+        >
             <a href="">
                 <img className={image} src={thumbProduct} alt="" />
             </a>
@@ -50,11 +91,18 @@ function ProductItem({
                     {isCart && <span> x </span>}
                     {quantityProduct} x ${priceProduct}
                 </span>
-                <span class={codeProduct}>{skuProduct}</span>
+                <span className={codeProduct}>{skuProduct}</span>
             </div>
-            <div className={close}>
+            <div className={close} onClick={handleDeleteProductCart}>
                 <IoCloseOutline style={{ fontSize: '22px' }} />
             </div>
+            {isDelete ? (
+                <div className={loading}>
+                    <VscLoading style={{ fontSize: '28px' }} />
+                </div>
+            ) : (
+                ''
+            )}
         </div>
     )
 }

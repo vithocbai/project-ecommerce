@@ -26,9 +26,11 @@ function Login() {
     const [isRegister, setIsRegister] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const { toast } = useContext(ToastContext)
-    const { setIsOpen } = useContext(SideBarContext)
+    const { setIsOpen, handGetListProductsCart } = useContext(SideBarContext)
     const { setUserId } = useContext(StoreContext)
+    
 
+    
     useEffect(() => {
         getInfo()
     }, [])
@@ -39,6 +41,7 @@ function Login() {
             password: '',
             confirmPassword: ''
         },
+
         validationSchema: Yup.object({
             email: Yup.string()
                 .required('Email is required ')
@@ -82,7 +85,7 @@ function Login() {
                         Cookies.set('token', token)
                         Cookies.set('refreshToken', refreshToken)
                         Cookies.set('userId', id)
-
+                        handGetListProductsCart(id, 'cart')
                         toast.success(
                             res.data?.message || 'Đăng nhập thành công!'
                         )
