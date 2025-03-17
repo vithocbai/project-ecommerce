@@ -9,6 +9,11 @@ import { useContext } from 'react'
 import { OurShopContext } from '@/context/OurShopProvider'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { SideBarContext } from '@/context/SideBarProvider'
+import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
+import { addProductCart } from '@/apis/cartServices'
+import { ImSpinner3 } from 'react-icons/im'
 
 function ProductItem({
     src,
@@ -40,6 +45,10 @@ function ProductItem({
     const ourShopStore = useContext(OurShopContext)
     const [isChooseSize, setIsChooseSize] = useState('')
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid)
+    const { setIsOpen, setType, handGetListProductsCart } =
+        useContext(SideBarContext)
+    const userId = Cookies.get('userId')
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
         if (isHomePage) {
@@ -55,6 +64,42 @@ function ProductItem({
 
     const removeSize = () => {
         setIsChooseSize('')
+    }
+
+    const handleAddToCart = () => {
+        if (!userId) {
+            setIsOpen(true)
+            setType('login')
+            toast.warning('Bạn cần đăng nhập')
+            return
+        }
+
+        if (!isChooseSize) {
+            toast.warning('Bạn cần chọn Size')
+            return
+        }
+
+        const data = {
+            userId,
+            productId: details._id,
+            quantity: 1,
+            size: isChooseSize
+        }
+        setIsLoading(true)
+        addProductCart(data)
+            .then((res) => {
+                setIsOpen(true)
+                setType('cart')
+                toast.success('Thêm sản phẩm thành công')
+                setIsLoading(false)
+                if (userId) {
+                    handGetListProductsCart(userId, 'cart')
+                }
+            })
+            .catch((err) => {
+                console.log(err)
+                setIsLoading(false)
+            })
     }
 
     return (
@@ -114,8 +159,17 @@ function ProductItem({
                     <span className={priceProduct}>${price}</span>
                 </div>
                 {!isHomePage && (
-                    <div className={groupBtn}>
-                        <Button content="ADD TO CART" primary />
+                    <div className={groupBtn} onClick={handleAddToCart}>
+                        <Button
+                            content={
+                                isLoading ? (
+                                    <ImSpinner3 style={{ fontSize: '28px' }} />
+                                ) : (
+                                    'ADD TO CART'
+                                )
+                            }
+                            primary
+                        />
                     </div>
                 )}
             </div>

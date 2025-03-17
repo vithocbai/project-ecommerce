@@ -18,15 +18,16 @@
         width: 70px;
     }
 
-    .titleLink {
-        font-weight: 500;
+    .titleLink,
+    .size {
+        font-weight: 400;
         font-size: 15px;
         text-decoration: none;
         color: $primary_color;
     }
 
     .selectQutity {
-        padding: 0 6px 0 6px ;
+        padding: 0 6px 0 6px;
         height: 36px;
         font-size: 12px;
         color: $thrid_color;
@@ -35,19 +36,19 @@
         outline: none;
     }
 
-    .price  {
+    .price {
         color: $thrid_color;
         display: inline-block;
         margin-top: 10px;
         font-size: 14px;
     }
-    
+
     .close {
         position: absolute;
         top: 20px;
         right: 0;
         color: $thrid_color;
-        transition: all .2s ease-out;
+        transition: all 0.2s ease-out;
         opacity: 0;
         visibility: hidden;
     }
@@ -57,5 +58,12 @@
         opacity: 6;
         visibility: visible;
         cursor: pointer;
+    }
+
+    .codeProduct {
+        display: block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #333;
     }
 }

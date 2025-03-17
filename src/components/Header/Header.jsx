@@ -24,13 +24,15 @@ function MyHeader() {
         containerBoxIcon,
         containerMenu,
         headerTop,
-        fixedPositon
+        fixedPositon,
+        boxCart,
+        quantity
     } = styles
 
     const { scrollPositon } = useScrollHandling()
     const [fixedHeader, setFixedhader] = useState()
 
-    const { setIsOpen, setType } = useContext(SideBarContext)
+    const { setIsOpen, setType, listProductCart } = useContext(SideBarContext)
 
     const handleOpenSideBar = (type) => {
         setIsOpen(true)
@@ -103,10 +105,13 @@ function MyHeader() {
                             style={{ fontSize: '28px' }}
                             onClick={() => handleOpenSideBar('wishlist')}
                         />
-                        <BsCartCheck
-                            style={{ fontSize: '22px' }}
-                            onClick={() => handleOpenSideBar('cart')}
-                        />
+                        <div className={boxCart}>
+                            <BsCartCheck
+                                style={{ fontSize: '22px' }}
+                                onClick={() => handleOpenSideBar('cart')}
+                            />
+                            <div className={quantity}>{listProductCart.length}</div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,23 +2,39 @@ import Button from '@components/Button/Button'
 import styles from './styles.module.scss'
 import { IoCloseOutline } from 'react-icons/io5'
 
-function ProductItem({ isCart }) {
-    const { container, image, titleLink, selectQutity, price, close } = styles
+function ProductItem({
+    isCart,
+    thumbProduct,
+    titleProduct,
+    sizeProduct,
+    quantityProduct,
+    priceProduct,
+    skuProduct
+}) {
+    const {
+        container,
+        image,
+        titleLink,
+        selectQutity,
+        price,
+        close,
+        codeProduct,
+        size
+    } = styles
     return (
         <div className={container}>
             <a href="">
-                <img
-                    className={image}
-                    src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min.jpg"
-                    alt=""
-                />
+                <img className={image} src={thumbProduct} alt="" />
             </a>
             <div>
                 <h4>
                     <a href="" className={titleLink}>
-                        Gravida quis
+                        {titleProduct}
                     </a>
                 </h4>
+                <div className={size} style={{ marginTop: '4px' }}>
+                    Size: {sizeProduct}
+                </div>
                 {isCart && (
                     <select name="" id="" className={selectQutity}>
                         <option value="">1</option>
@@ -31,9 +47,10 @@ function ProductItem({ isCart }) {
                 )}
 
                 <span className={price}>
-                   {isCart &&  <span> x </span>}
-                    $434.20
+                    {isCart && <span> x </span>}
+                    {quantityProduct} x ${priceProduct}
                 </span>
+                <span class={codeProduct}>{skuProduct}</span>
             </div>
             <div className={close}>
                 <IoCloseOutline style={{ fontSize: '22px' }} />
