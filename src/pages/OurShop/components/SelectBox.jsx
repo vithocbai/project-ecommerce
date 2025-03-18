@@ -2,6 +2,7 @@ import styles from '../styles.module.scss'
 import cls from 'classnames'
 function SelectBox({ option, getValue, w80, type }) {
     const { selectOption } = styles
+    
     return (
         <select
             className={cls(

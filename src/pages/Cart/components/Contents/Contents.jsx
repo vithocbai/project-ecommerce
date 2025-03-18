@@ -1,11 +1,17 @@
+import MainLayout from '@components/Layout/Layout'
 import styles from '../../styles.module.scss'
+import CartTable from './CartTable'
 
 function Contents() {
-    const { containerSteps } = styles
+    const { containerContent } = styles
     return (
-        <div>
-            {/* Contents */}
-        </div>
+        <>
+            <MainLayout>
+                <div className={containerContent}>
+                    <CartTable />
+                </div>
+            </MainLayout>
+        </>
     )
 }
 
