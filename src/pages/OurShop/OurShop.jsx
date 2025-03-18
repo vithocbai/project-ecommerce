@@ -2,10 +2,10 @@ import MyHeader from '@components/Header/Header'
 import MainLayout from '@components/Layout/Layout'
 import styles from './styles.module.scss'
 import { useNavigate } from 'react-router-dom'
-import Banner from '@pages/components/Banner'
+import Banner from './components/Banner'
 import OurShopProvider from '@/context/OurShopProvider'
-import Filter from '../components/Filter'
-import ListProduct from '../components/ListProduct'
+import Filter from './components/Filter'
+import ListProduct from './components/ListProduct'
 import MyFooter from '@components/Footer/Footer'
 
 function OurShop() {

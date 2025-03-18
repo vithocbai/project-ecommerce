@@ -1,9 +1,10 @@
 import Button from '@components/Button/Button'
-import styles from '../OurShop/styles.module.scss'
+import styles from '../styles.module.scss'
 import CountdownTimer from '@components/CountdownTimer/CountdownTimer'
 
 function Banner() {
-    const { containerBanner, bannerContent, title, btnBuy, countDowntBox } = styles
+    const { containerBanner, bannerContent, title, btnBuy, countDowntBox } =
+        styles
     const targetDate = '2025-05-01'
     return (
         <div className={containerBanner}>

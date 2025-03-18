@@ -1,3 +1,4 @@
+@import '@styles/variable.module.scss';
 @import '@styles/mixin.module.scss';
 
 .container {
@@ -12,8 +13,27 @@
     }
 
     .groupBtn {
-        @include flex_box_custom(normal,center,10px);
+        @include flex_box_custom(normal, center, 10px);
         flex-direction: column;
         height: 95px;
+    }
+
+    .infoCart {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100%;
+        margin-top: 15px;
+        gap: 15px;
+    }
+
+    .desc {
+        font-size: 16px;
+        color: $thrid_color;
+        text-align: center;
+    }
+    .returnShop {
+        @include btn(163px, 34px, 4px);
     }
 }

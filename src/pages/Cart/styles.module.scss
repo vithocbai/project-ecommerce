@@ -1,0 +1,63 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.containerCart {
+    margin-top: 83px;
+
+    .containerSteps {
+        padding: 38px 0;
+        background-color: #fafafa;
+
+        .listSteps {
+            @include flex_box_custom(center, center, 10px);
+        }
+
+        .boxSteps {
+            @include flex_box_custom(center, center, 8px);
+        }
+
+        .boxSteps::after {
+            display: inline-flex;
+            content: '';
+            border-bottom: 1px solid #e1e1e1;
+            min-width: 120px;
+            margin: 0 20px;
+        }
+
+        .boxSteps:last-child::after {
+            display: none;
+        }
+
+        .numberSteps {
+            @include flex_box_custom(center, center, 0);
+            width: 30px;
+            height: 30px;
+            color: $white_color;
+            border: 1px solid #e1e1e1;
+            border-radius: 50%;
+            background-color: $detail_color;
+        }
+
+        .isDisibleNumber {
+            color: #9a9a9a;
+            background-color: transparent;
+        }
+
+        .textSteps {
+            text-transform: uppercase;
+            color: $detail_color;
+            font-size: 21px;
+        }
+
+        .isDisibleText {
+            color: #9a9a9a;
+        }
+
+        .desc {
+            text-align: center;
+            padding-top: 38px;
+            line-height: 1.5;
+            color: $detail_color;
+        }
+    }
+}

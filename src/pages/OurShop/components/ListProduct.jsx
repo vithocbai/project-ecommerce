@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import { OurShopContext } from '@/context/OurShopProvider'
 import ProductItem from '@components/ProductItem/ProductItem'
-import styles from '../OurShop/styles.module.scss'
+import styles from '../styles.module.scss'
 import Button from '@components/Button/Button'
 import { ImSpinner3 } from 'react-icons/im'
 
@@ -50,7 +50,7 @@ function ListProduct() {
                                     ) : (
                                         'Load More Products'
                                     )
-                                }   
+                                }
                             />
                         </div>
                     )}

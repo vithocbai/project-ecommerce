@@ -1,4 +1,4 @@
-import styles from '../OurShop/styles.module.scss'
+import styles from '../styles.module.scss'
 import { useContext } from 'react'
 import { OurShopContext } from '@/context/OurShopProvider'
 import { BsGrid3X3Gap } from 'react-icons/bs'
@@ -10,7 +10,7 @@ function Filter() {
 
     const { sortOption, showOption, setSortId, setShowId, setIsShowGrid } =
         useContext(OurShopContext)
-  
+
     const getValueSelect = (value, type) => {
         if (type === 'sort') {
             setSortId(value)
@@ -26,7 +26,7 @@ function Filter() {
             setIsShowGrid(false)
         }
     }
-    
+
     return (
         <div className={containerFilter}>
             <div className={filterLeft}>

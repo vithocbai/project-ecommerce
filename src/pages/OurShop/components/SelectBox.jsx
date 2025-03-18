@@ -1,4 +1,4 @@
-import styles from '../OurShop/styles.module.scss'
+import styles from '../styles.module.scss'
 import cls from 'classnames'
 function SelectBox({ option, getValue, w80, type }) {
     const { selectOption } = styles
