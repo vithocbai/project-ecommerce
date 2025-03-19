@@ -212,6 +212,52 @@
     }
 }
 
+.coupon {
+    @include flex_box_custom(center, space-between, 10px);
+    border-top: 1px solid #333;
+    padding-top: 14px;
+    margin-top: 20px;
+
+    .couponSearch {
+        @include flex_box_custom(center, flex-start, 0);
+
+        & input {
+            height: 36px;
+            outline: none;
+            background: transparent;
+            border: none;
+        }
+
+        & input[type='text'] {
+            width: 310px;
+            color: $detail_color;
+            padding: 0 41px 0 17px;
+            border: 1px solid #e1e1e1;
+        }
+
+        & input[type='submit'] {
+            width: 36px;
+            color: $primary_color;
+            border: 1px solid #333;
+            font-size: 12px;
+        }
+    }
+
+    .couponClear {
+        @include btn(218px, 34px, 3px);
+
+        button {
+            color: $primary_color;
+            font-size: 12px;
+            text-transform: uppercase;
+
+            &:hover {
+                color: #fff;
+            }
+        }
+    }
+}
+
 .containerCheckout {
     position: relative;
     padding-top: 40px;
@@ -252,11 +298,8 @@
             border: 1px solid #e1e1e1;
             border-radius: 4px;
         }
-
-        
     }
 
-    
     .secureText {
         text-align: center;
         font-size: 14px;
