@@ -1,8 +1,7 @@
 import styles from '../styles.module.scss'
 import cls from 'classnames'
-function SelectBox({ option, getValue, w80, type }) {
+function SelectBox({ option, getValue, w80, type, defaultValue }) {
     const { selectOption } = styles
-    
     return (
         <select
             className={cls(
@@ -13,6 +12,7 @@ function SelectBox({ option, getValue, w80, type }) {
             onChange={(e) => {
                 getValue(e.target.value, type)
             }}
+            value={defaultValue}
         >
             {option.map((item, index) => {
                 return (
