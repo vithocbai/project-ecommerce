@@ -1,0 +1,24 @@
+.slick-slider:hover .slick-prev,
+.slick-slider:hover .slick-next {
+    opacity: 0.8;
+    color: rgb(46, 45, 45);
+    opacity: 1;
+}
+
+.slick-prev,
+.slick-next {
+    transition: color 0.5s linear;
+    height: 30px;
+    width: 30px;
+    opacity: 0;
+}
+
+.slick-prev {
+    z-index: 2;
+    left: 8px;
+}
+
+.slick-next {
+    z-index: 2;
+    right: 8px;
+}

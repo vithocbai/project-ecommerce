@@ -61,4 +61,5 @@
 
 -- import { ToastContainer, toast } from 'react-toastify'
 
--- 20/03 - b51
+## React Slick hỗ trợ trượt slide 
+-- 20/03 - b54
