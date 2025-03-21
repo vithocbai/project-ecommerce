@@ -3,7 +3,7 @@ import styles from '../../styles.module.scss'
 import { FaRegTrashCan } from 'react-icons/fa6'
 import SelectBox from '@/pages/OurShop/components/SelectBox'
 
-const CartTable = ({ listProductCart, getData }) => {
+const CartTable = ({ listProductCart, getData, getDeleteData }) => {
     const showOption = [
         { label: '1', value: '1' },
         { label: '2', value: '2' },
@@ -53,7 +53,12 @@ const CartTable = ({ listProductCart, getData }) => {
                             </div>
                         </td>
                         <td>
-                            <button className={styles.removeItem}>
+                            <button
+                                className={styles.removeItem}
+                                onClick={() =>
+                                    getDeleteData({ userId: item.userId, productId: item.productId })
+                                }
+                            >
                                 <FaRegTrashCan />
                             </button>
                         </td>

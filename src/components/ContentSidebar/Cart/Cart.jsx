@@ -13,17 +13,24 @@ function Cart({ isCart }) {
         containerHeader,
         total,
         groupBtn,
+        actBtn,
         infoCart,
         returnShop,
         desc
     } = styles
-    
+
     const { listProductCart, setIsOpen } = useContext(SideBarContext)
     const navigate = useNavigate()
 
     const handleNavigateOurShop = () => {
         navigate('/shop')
         setIsOpen(false)
+    }
+
+    const handleNavigateCart = () => {
+        navigate('/cart')
+        setIsOpen(false)
+        console.log('ac')
     }
 
     const subTotal = listProductCart.reduce((total, item) => {
@@ -66,8 +73,12 @@ function Cart({ isCart }) {
                     </div>
 
                     <div className={groupBtn}>
-                        <Button content={'VIEW CART'} primary />
-                        <Button content={'CHECKOUT'} />
+                        <div className={actBtn} onClick={() => handleNavigateCart()}>
+                            <Button content={'VIEW CART'} primary />
+                        </div>
+                        <div className={actBtn}>
+                            <Button content={'CHECKOUT'} />
+                        </div>
                     </div>
                 </div>
             ) : (

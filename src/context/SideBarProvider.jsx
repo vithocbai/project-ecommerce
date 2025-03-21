@@ -34,7 +34,8 @@ export const SideBarProvider = ({ children }) => {
         type,
         setType,
         handGetListProductsCart,
-        listProductCart
+        listProductCart,
+        userId
     }
     return (
         <SideBarContext.Provider value={value}>

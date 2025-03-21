@@ -307,3 +307,26 @@
         color: #555;
     }
 }
+
+.boxCartEmty {
+    text-align: center;
+    padding: 70px 0;
+
+    .heading {
+        color: $primary_color;
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+
+    .desc {
+        font-size: 14px;
+        color: $detail_color;
+        margin-bottom: 20px;
+    }
+
+    .actBtn {
+        width: 163px;
+        height: 34px;
+        margin: 0 auto;
+    }
+}

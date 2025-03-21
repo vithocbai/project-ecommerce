@@ -30,7 +30,7 @@ function ProductItem({
         loading
     } = styles
 
-    const { handGetListProductsCart } = useContext(SideBarContext)
+    const { handGetListProductsCart} = useContext(SideBarContext)
     const [isDelete, setIsDelete] = useState(false)
     const [isFading, setIsFading] = useState(false)
 
