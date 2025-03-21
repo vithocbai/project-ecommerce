@@ -16,7 +16,7 @@ function SliderScroll({ data }) {
         nextArrow: <IoIosArrowForward />,
         prevArrow: <IoIosArrowBack />
     }
-    console.log(data[0])
+
     return (
         <Slider {...settings}>
             {data.map((images, index) => {

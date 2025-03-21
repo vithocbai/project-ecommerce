@@ -7,9 +7,8 @@ import SelectBox from './SelectBox'
 
 function Filter() {
     const { containerFilter, filterLeft, filterRight, boxIcon } = styles
-
     const { sortOption, showOption, setSortId, setShowId, setIsShowGrid } =
-        useContext(OurShopContext)
+    useContext(OurShopContext)
 
     const getValueSelect = (value, type) => {
         if (type === 'sort') {
