@@ -14,6 +14,7 @@ import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
 import { addProductCart } from '@/apis/cartServices'
 import { ImSpinner3 } from 'react-icons/im'
+import { useNavigate } from 'react-router-dom'
 
 function ProductItem({
     src,
@@ -45,10 +46,11 @@ function ProductItem({
     const ourShopStore = useContext(OurShopContext)
     const [isChooseSize, setIsChooseSize] = useState('')
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid)
-    const { setIsOpen, setType, handGetListProductsCart, setDetailProduct} =
+    const { setIsOpen, setType, handGetListProductsCart, setDetailProduct } =
         useContext(SideBarContext)
     const userId = Cookies.get('userId')
     const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (isHomePage) {
@@ -106,14 +108,21 @@ function ProductItem({
         setIsOpen(true)
         setType('detail')
         setDetailProduct(details)
-        
+    }
+
+    const handleNavigateToDetails = () => {
+        console.log(details._id)
+        const path = `/product/${details._id}`
+        navigate(path)
     }
 
     return (
         <div className={!isShowGrid ? containerGrid : ' '}>
             <div className={boxImg}>
-                <img className={img} src={src} alt="" />
-                <img className={imgWhenHover} src={prevSrc} alt="" />
+                <div onClick={handleNavigateToDetails}>
+                    <img className={img} src={src} alt="" />
+                    <img className={imgWhenHover} src={prevSrc} alt="" />
+                </div>
                 <div className={iconFncWhenShow}>
                     <div className={icon}>
                         <img src={bagIcon} alt="" />
