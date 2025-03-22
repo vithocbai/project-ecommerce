@@ -69,11 +69,14 @@ function Cart({ isCart }) {
                 <div>
                     <div className={total}>
                         <p className="title">SUBTOTAL:</p>
-                        <span>${subTotal}</span>
+                        <span>${subTotal.toFixed(2)}</span>
                     </div>
 
                     <div className={groupBtn}>
-                        <div className={actBtn} onClick={() => handleNavigateCart()}>
+                        <div
+                            className={actBtn}
+                            onClick={() => handleNavigateCart()}
+                        >
                             <Button content={'VIEW CART'} primary />
                         </div>
                         <div className={actBtn}>

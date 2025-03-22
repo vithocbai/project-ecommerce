@@ -36,10 +36,19 @@
             @include flex_box_custom(center, center, 0);
             width: 26px;
             height: 26px;
-            border: 1px solid #333;
+            border: 1px solid #949393;
             padding: 3px;
             font-size: 14px;
         }
+
+        .isActive {
+            border: 2px solid #000;
+        }
+    }
+
+    .clearSize {
+        display: block;
+        margin-top: 8px;
     }
 
     .addToCart {
@@ -110,9 +119,25 @@
     .boxDesc {
         font-size: 16px;
         color: $detail_color;
-
+        margin-bottom: 12px;
         span {
             color: $second_color;
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    .listSocial {
+        @include flex_box_custom(center, flex-start, 10px);
+        & li {
+            list-style: none;
+        }
+
+        & a {
+            color: #888;
+            font-size: 18px;
         }
     }
 }
