@@ -3,29 +3,37 @@ import MainLayout from '@components/Layout/Layout'
 import styles from './styles.module.scss'
 import Button from '@components/Button/Button'
 import { BsCart3 } from 'react-icons/bs'
+import { IoMdHeartEmpty } from 'react-icons/io'
+import { TfiReload } from 'react-icons/tfi'
+import SafeCheckout from '@/pages/Cart/components/Contents/SafeCheckOut'
 
+const {
+    container,
+    breadcrumbsBox,
+    breadcrumbs,
+    homeNav,
+    breadcrumbsLink,
+    backHome,
+    contentSection,
+    boxImage,
+    boxContent,
+    heading,
+    price,
+    desc,
+    size,
+    boxSize,
+    nameSize,
+    functionInfo,
+    quantity,
+    addCart,
+    separate,
+    boxIcon,
+    heartIcon,
+    reloadIcon,
+    productMeta,
+    metaInfo
+} = styles
 function DetailProduct() {
-    const {
-        container,
-        breadcrumbsBox,
-        breadcrumbs,
-        homeNav,
-        breadcrumbsLink,
-        backHome,
-        contentSection,
-        boxImage,
-        boxContent,
-        heading,
-        price,
-        desc,
-        size,
-        boxSize,
-        nameSize,
-        functionInfo,
-        quantity,
-        addCart,
-        separate,
-    } = styles
     return (
         <div>
             <MyHeader />
@@ -94,6 +102,28 @@ function DetailProduct() {
                                     primary
                                     content={<div>{<BsCart3 />} BUY NOW</div>}
                                 />
+                            </div>
+                            <div className={boxIcon}>
+                                <div className={heartIcon}>
+                                    <IoMdHeartEmpty />
+                                </div>
+                                <div className={reloadIcon}>
+                                    <TfiReload />
+                                </div>
+                            </div>
+                            <div>
+                                <SafeCheckout />
+                            </div>
+                            <div className={productMeta}>
+                                <div className={metaInfo}>
+                                    Brand: <span>Brand 04</span>
+                                </div>
+                                <div className={metaInfo}>
+                                    Sku: <span>12420</span>
+                                </div>
+                                <div className={metaInfo}>
+                                    Category: <span>Men</span>
+                                </div>
                             </div>
                         </div>
                     </div>

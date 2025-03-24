@@ -94,6 +94,7 @@
 
         .functionInfo {
             @include flex_box_custom(center, space-between, 0);
+            margin-bottom: 20px;
         }
 
         .quantity {
@@ -120,6 +121,77 @@
         .addCart {
             width: 85%;
             height: 40px;
+        }
+
+        .separate {
+            position: relative;
+            margin-bottom: 14px;
+            text-align: center;
+            font-size: 14px;
+            padding: 0 5px;
+            text-transform: uppercase;
+            color: #555;
+        }
+
+        .separate::after,
+        .separate::before {
+            display: block;
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background-color: #555;
+            transform: translateY(-50%);
+        }
+
+        .separate::before {
+            left: 0;
+        }
+
+        .separate::after {
+            right: 0;
+        }
+
+        .boxIcon {
+            @include flex_box_custom(center, unset, 10px);
+            margin-top: 20px;
+
+            .heartIcon,
+            .reloadIcon {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                border: 1px solid #ccc;
+                cursor: pointer;
+            }
+
+            .heartIcon {
+                svg {
+                    font-size: 24px;
+                }
+            }
+
+            .reloadIcon {
+                svg {
+                    font-size: 20px;
+                }
+            }
+        }
+
+        .productMeta {
+            margin-top: 20px;
+            .metaInfo {
+                color: $detail_color;
+                margin-bottom: 10px;
+            }
+
+            span {
+                color: $second_color;
+            }
         }
     }
 }
