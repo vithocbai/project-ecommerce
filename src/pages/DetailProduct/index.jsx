@@ -8,6 +8,7 @@ import { TfiReload } from 'react-icons/tfi'
 import SafeCheckout from '@/pages/Cart/components/Contents/SafeCheckOut'
 import Accordion from '@components/Accordion/Accordion'
 import MyFooter from '@components/Footer/Footer'
+import { useState } from 'react'
 
 const {
     container,
@@ -36,6 +37,25 @@ const {
     metaInfo
 } = styles
 function DetailProduct() {
+    const [menuSelect, setMenuSelect] = useState(1)
+
+    const dataAccordionMenu = [
+        {
+            id: 1,
+            titleMenu: 'Additional information',
+            contentMenu: 'Size === M, L, S'
+        },
+        {
+            id: 2,
+            titleMenu: 'Reviews (0)',
+            contentMenu: 'Size === M, L, S'
+        }
+    ]
+
+    const handleMenuSelect = (id) => {
+        setMenuSelect(id)
+    }
+
     return (
         <div>
             <MyHeader />
@@ -129,8 +149,19 @@ function DetailProduct() {
                                 </div>
                             </div>
 
-                            <Accordion />
-                            <Accordion />
+                            {dataAccordionMenu.map((item, index) => {
+                                return (
+                                    <Accordion
+                                        key={index}
+                                        titleMenu={item.titleMenu}
+                                        contentMenu={item.contentMenu}
+                                        onClick={() =>
+                                            handleMenuSelect(item.id)
+                                        }
+                                        isSelect={menuSelect === item.id}
+                                    />
+                                )
+                            })}
                         </div>
                     </div>
                 </MainLayout>

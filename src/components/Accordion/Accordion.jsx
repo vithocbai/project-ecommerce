@@ -1,10 +1,9 @@
-import { useState } from 'react'
 import styles from './styles.module.scss'
 import { IoChevronDown } from 'react-icons/io5'
 import { GrFormSubtract } from 'react-icons/gr'
 import cls from 'classnames'
 
-function Accordion() {
+function Accordion({ titleMenu, contentMenu, onClick, isSelect }) {
     const {
         container,
         infomation,
@@ -14,10 +13,9 @@ function Accordion() {
         isVisibility,
         borderBottom
     } = styles
-    const [isSelect, setIsSelect] = useState(false)
 
     const checkAccordion = () => {
-        setIsSelect(!isSelect)
+        onClick()
     }
 
     return (
@@ -31,7 +29,7 @@ function Accordion() {
                     onClick={() => checkAccordion()}
                 >
                     {isSelect ? <GrFormSubtract /> : <IoChevronDown />}
-                    Additional information
+                    {titleMenu}
                 </div>
 
                 <div
@@ -39,7 +37,7 @@ function Accordion() {
                         [isVisibility]: isSelect
                     })}
                 >
-                    <div>Size ---- L, M , S</div>
+                    <div>{contentMenu}</div>
                 </div>
             </div>
         </div>
