@@ -6,6 +6,8 @@ import { BsCart3 } from 'react-icons/bs'
 import { IoMdHeartEmpty } from 'react-icons/io'
 import { TfiReload } from 'react-icons/tfi'
 import SafeCheckout from '@/pages/Cart/components/Contents/SafeCheckOut'
+import Accordion from '@components/Accordion/Accordion'
+import MyFooter from '@components/Footer/Footer'
 
 const {
     container,
@@ -69,6 +71,7 @@ function DetailProduct() {
                                 alt=""
                             />
                         </div>
+
                         <div className={boxContent}>
                             <h2 className={heading}>10K Yellow Gold</h2>
                             <p className={price}>$99.99</p>
@@ -125,10 +128,15 @@ function DetailProduct() {
                                     Category: <span>Men</span>
                                 </div>
                             </div>
+
+                            <Accordion />
+                            <Accordion />
                         </div>
                     </div>
                 </MainLayout>
             </div>
+
+            <MyFooter />
         </div>
     )
 }

@@ -1,0 +1,41 @@
+.container {
+    .title {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        padding: 9px 15px;
+        font-size: 14px;
+        text-transform: uppercase;
+        color: #404040;
+        transition: all 0.3s linear;
+        user-select: none;
+
+        & svg {
+            margin-right: 4px;
+            font-size: 18px;
+        }
+    }
+
+    .titleActive {
+        background-color: #f7f7f7;
+    }
+
+    .rowDesc {
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        padding: 0 20px;
+    }
+
+    .isVisibility {
+        height: auto;
+        visibility: visible;
+        padding: 20px;
+        transition: all 0.3s linear;
+    }
+
+    .borderBottom {
+        border-bottom: 1px solid #333;
+        transition: all 0.2s linear;
+    }
+}

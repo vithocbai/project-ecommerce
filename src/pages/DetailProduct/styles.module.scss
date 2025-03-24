@@ -36,14 +36,16 @@
 .contentSection {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     width: 100%;
 
     .boxImage {
-        @include grid(2, 10px, 10px);
         padding: 0 15px 15px 0;
         img {
-            height: 350px;
+            width: calc(100% / 2 - 10px);
+            height: 352px;
             object-fit: cover;
+            padding: 0 10px 10px 0;
         }
     }
 
@@ -183,7 +185,7 @@
         }
 
         .productMeta {
-            margin-top: 20px;
+            margin: 20px 0;
             .metaInfo {
                 color: $detail_color;
                 margin-bottom: 10px;
