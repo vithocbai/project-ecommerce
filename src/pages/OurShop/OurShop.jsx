@@ -25,7 +25,7 @@ function OurShop() {
 
     return (
         <OurShopProvider>
-            <MyHeader />
+            <MyHeader />    
             <MainLayout>
                 <div className={container}>
                     <div className={breadcrumbsBox}>

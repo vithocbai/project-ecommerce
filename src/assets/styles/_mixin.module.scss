@@ -9,7 +9,6 @@
     gap: $gap;
 }
 
-
 @mixin btn($w: auto, $h: auto, $radius) {
     width: $w;
     height: $h;
@@ -20,10 +19,9 @@
     transition: background-color 200ms linear;
 }
 
-
-// @mixin grid_column($column, $y, $gap) {
-//     display: grid;
-//     grid-template-columns: (1fr, 2);
-//     align-items: $y;
-//     column-gap: $gap;
-// }
+@mixin grid($column, $columnGap, $rowGap) {
+    display: grid;
+    grid-template-columns: repeat($column, 1fr);
+    column-gap: $columnGap;
+    row-gap: $rowGap;
+}

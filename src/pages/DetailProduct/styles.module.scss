@@ -1,0 +1,125 @@
+@import '@styles/mixin.module.scss';
+@import '@styles/variable.module.scss';
+
+.container {
+    padding-top: 83px;
+
+    .breadcrumbsBox {
+        @include flex_box_custom(center, space-between, 0);
+        color: $primary_color;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .breadcrumbs {
+        @include flex_box_custom(center, flex-start, 8px);
+        color: $second_color;
+    }
+
+    .homeNav {
+        text-decoration: none;
+        color: $second_color;
+    }
+
+    .breadcrumbsLink {
+        color: $primary_color;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .backHome {
+        cursor: pointer;
+        color: $second_color;
+    }
+}
+
+.contentSection {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+
+    .boxImage {
+        @include grid(2, 10px, 10px);
+        padding: 0 15px 15px 0;
+        img {
+            height: 350px;
+            object-fit: cover;
+        }
+    }
+
+    .boxContent {
+        padding: 15px;
+
+        .heading {
+            font-size: 24px;
+            color: $detail_color;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+        .price {
+            font-size: 20px;
+            color: $second_color;
+            margin-bottom: 20px;
+        }
+        .desc {
+            font-size: 16px;
+            color: $thrid_color;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .size {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: $thrid_color;
+        }
+
+        .boxSize {
+            @include flex_box_custom(center, flex-start, 10px);
+            margin-top: 4px;
+            margin-bottom: 20px;
+
+            .nameSize {
+                @include flex_box_custom(center, center, 0);
+                width: 26px;
+                height: 26px;
+                border: 1px solid #949393;
+                padding: 3px;
+                font-size: 14px;
+            }
+
+            .isActive {
+                border: 2px solid #000;
+            }
+        }
+
+        .functionInfo {
+            @include flex_box_custom(center, space-between, 0);
+        }
+
+        .quantity {
+            @include flex_box_custom(center, flex-start, 0);
+            height: 38px;
+
+            span {
+                @include flex_box_custom(center, center, 0);
+                width: 18px;
+                height: inherit;
+                padding-right: 4px;
+                padding-left: 4px;
+                border: 1px solid #e1e1e1;
+            }
+
+            div {
+                @include flex_box_custom(center, center, 0);
+                width: 38px;
+                height: inherit;
+                border: 1px solid #e1e1e1;
+            }
+        }
+
+        .addCart {
+            width: 85%;
+            height: 40px;
+        }
+    }
+}
