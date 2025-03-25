@@ -22,7 +22,8 @@ function ProductItem({
     title,
     price,
     details,
-    isHomePage = true
+    isHomePage = true,
+    setShow
 }) {
     const {
         containerGrid,
@@ -46,6 +47,7 @@ function ProductItem({
     const ourShopStore = useContext(OurShopContext)
     const [isChooseSize, setIsChooseSize] = useState('')
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid)
+    console.log(isShowGrid)
     const { setIsOpen, setType, handGetListProductsCart, setDetailProduct } =
         useContext(SideBarContext)
     const userId = Cookies.get('userId')
@@ -59,6 +61,12 @@ function ProductItem({
             setIsShowGrid(ourShopStore?.isShowGrid)
         }
     }, [ourShopStore?.isShowGrid, isHomePage])
+
+    useEffect(() => {
+        if (setShow) setIsShowGrid(true)
+    }, [setShow])
+
+    console.log(isShowGrid)
 
     const handleChooseSize = (size) => {
         setIsChooseSize(size)

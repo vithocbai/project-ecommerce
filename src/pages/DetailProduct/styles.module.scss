@@ -288,3 +288,18 @@
         height: 34px;
     }
 }
+
+.listProduct {
+    margin-top: 60px;
+    h3 {
+        font-size: 24px;
+        color: $primary_color;
+        text-align: center;
+        font-weight: 400;
+        margin-bottom: 12px;
+    }
+
+    .boxProductItem {
+        width: 100%;
+    }
+}

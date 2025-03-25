@@ -5,7 +5,7 @@ function FormItem({ label, typeChildren, isRequired }) {
     const {boxStar} = styles
     const reanderStar = (length) => {
         return Array.from({ length}, (_, index) => (
-            <MdOutlineStar style={{ color: '#e1e1e1', fontSize: '22px' }} />
+            <MdOutlineStar key={index} style={{ color: '#e1e1e1', fontSize: '22px' }} />
         ))
     }
     const renderTypeChildren = () => {

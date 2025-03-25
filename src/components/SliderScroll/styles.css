@@ -17,3 +17,7 @@
 .slick-next {
     z-index: 2;
 }
+
+.thumb {
+    width: 100%;
+}

@@ -11,6 +11,7 @@ import MyFooter from '@components/Footer/Footer'
 import { useState } from 'react'
 import InfomationProduct from '@/pages/DetailProduct/components/Infomation'
 import ReviewsProduct from '@/pages/DetailProduct/components/Reviews'
+import SliderScroll from '@components/SliderScroll/SliderScroll'
 
 const {
     container,
@@ -36,7 +37,9 @@ const {
     heartIcon,
     reloadIcon,
     productMeta,
-    metaInfo
+    metaInfo,
+    listProduct,
+    boxProductItem
 } = styles
 function DetailProduct() {
     const [menuSelect, setMenuSelect] = useState(1)
@@ -54,6 +57,33 @@ function DetailProduct() {
         }
     ]
 
+    const tempDateSlider = [
+        {
+            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg',
+            name: 'Related products',
+            price: '12000',
+            size: [{ name: 'M' }, { name: 'L' }]
+        },
+        {
+            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min.jpg',
+            name: 'Related products',
+            price: '12000',
+            size: [{ name: 'M' }, { name: 'L' }]
+        },
+        {
+            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg',
+            name: 'Related products',
+            price: '12000',
+            size: [{ name: 'M' }, { name: 'L' }]
+        },
+        {
+            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min.jpg',
+            name: 'Related products',
+            price: '12000',
+            size: [{ name: 'M' }, { name: 'L' }]
+        }
+    ]
+
     const handleMenuSelect = (id) => {
         setMenuSelect(id)
     }
@@ -65,9 +95,9 @@ function DetailProduct() {
                 <MainLayout>
                     <div className={breadcrumbsBox}>
                         <div className={breadcrumbs}>
-                            <a href="./" className={homeNav}>
+                            <a href="" className={homeNav}>
                                 Home
-                            </a>{' '}
+                            </a>
                             &gt; <h3 className={breadcrumbsLink}>Men</h3>
                         </div>
                         <div className={backHome}>
@@ -165,6 +195,18 @@ function DetailProduct() {
                                     />
                                 )
                             })}
+                        </div>
+                    </div>
+
+                    <div className={listProduct}>
+                        <h3>Related products</h3>
+                        <div className={boxProductItem}>
+                            <SliderScroll
+                                data={tempDateSlider}
+                                isProductItem
+                                slideToShowProduct={4}
+                               
+                            />
                         </div>
                     </div>
                 </MainLayout>
