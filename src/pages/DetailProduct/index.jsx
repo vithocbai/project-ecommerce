@@ -9,6 +9,8 @@ import SafeCheckout from '@/pages/Cart/components/Contents/SafeCheckOut'
 import Accordion from '@components/Accordion/Accordion'
 import MyFooter from '@components/Footer/Footer'
 import { useState } from 'react'
+import InfomationProduct from '@/pages/DetailProduct/components/Infomation'
+import ReviewsProduct from '@/pages/DetailProduct/components/Reviews'
 
 const {
     container,
@@ -43,12 +45,12 @@ function DetailProduct() {
         {
             id: 1,
             titleMenu: 'Additional information',
-            contentMenu: 'Size === M, L, S'
+            contentMenu: <div>{<InfomationProduct />}</div>
         },
         {
             id: 2,
             titleMenu: 'Reviews (0)',
-            contentMenu: 'Size === M, L, S'
+            contentMenu: <div>{<ReviewsProduct />}</div>
         }
     ]
 
@@ -137,6 +139,7 @@ function DetailProduct() {
                             <div>
                                 <SafeCheckout />
                             </div>
+
                             <div className={productMeta}>
                                 <div className={metaInfo}>
                                     Brand: <span>Brand 04</span>

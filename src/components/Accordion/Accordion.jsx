@@ -2,6 +2,7 @@ import styles from './styles.module.scss'
 import { IoChevronDown } from 'react-icons/io5'
 import { GrFormSubtract } from 'react-icons/gr'
 import cls from 'classnames'
+import InfomationProduct from '@/pages/DetailProduct/components/Infomation'
 
 function Accordion({ titleMenu, contentMenu, onClick, isSelect }) {
     const {
@@ -39,6 +40,8 @@ function Accordion({ titleMenu, contentMenu, onClick, isSelect }) {
                 >
                     <div>{contentMenu}</div>
                 </div>
+                
+                
             </div>
         </div>
     )
