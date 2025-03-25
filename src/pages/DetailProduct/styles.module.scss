@@ -36,16 +36,18 @@
 .contentSection {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-
+    align-items: start;
     width: 100%;
-
+    
     .boxImage {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10px;
+        row-gap: 10px;
         padding: 0 15px 15px 0;
-        img {
-            width: calc(100% / 2 - 10px);
-            height: 352px;
-            object-fit: cover;
-            padding: 0 10px 10px 0;
+
+        &:hover div {
+            cursor: all-scroll;
         }
     }
 

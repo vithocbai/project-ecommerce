@@ -32,6 +32,9 @@ importers:
       react-icons:
         specifier: ^5.5.0
         version: 5.5.0(react@19.0.0)
+      react-img-zoom:
+        specifier: ^0.1.0
+        version: 0.1.0(prop-types@15.8.1)(react@19.0.0)
       react-router-dom:
         specifier: ^7.2.0
         version: 7.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1498,6 +1501,12 @@ packages:
   react-icons@5.5.0:
     resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
     peerDependencies:
+      react: '*'
+
+  react-img-zoom@0.1.0:
+    resolution: {integrity: sha512-TkoDAKJQWuZX3w7+8loHUH/1aT2nNdCPSz2RR8t1Ckp86mrZ728Afm5oOyc7a3bnCJsUK1suaDvXBjpvwJEnrg==}
+    peerDependencies:
+      prop-types: '*'
       react: '*'
 
   react-is@16.13.1:
@@ -3298,6 +3307,11 @@ snapshots:
 
   react-icons@5.5.0(react@19.0.0):
     dependencies:
+      react: 19.0.0
+
+  react-img-zoom@0.1.0(prop-types@15.8.1)(react@19.0.0):
+    dependencies:
+      prop-types: 15.8.1
       react: 19.0.0
 
   react-is@16.13.1: {}

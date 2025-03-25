@@ -12,6 +12,8 @@ import { useState } from 'react'
 import InfomationProduct from '@/pages/DetailProduct/components/Infomation'
 import ReviewsProduct from '@/pages/DetailProduct/components/Reviews'
 import SliderScroll from '@components/SliderScroll/SliderScroll'
+import React from 'react'
+import Zoom from 'react-img-zoom'
 
 const {
     container,
@@ -56,6 +58,21 @@ function DetailProduct() {
             contentMenu: <div>{<ReviewsProduct />}</div>
         }
     ]
+    const dataSrc = [
+        {
+            src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg'
+        },
+        {
+            src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.1-min.jpg'
+        },
+        {
+            src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg'
+        }
+    ]
+
+    const ImageZoom = (src) => {
+        return <Zoom img={src} zoomScale={2} width={295} height={350} />
+    }
 
     const tempDateSlider = [
         {
@@ -106,22 +123,9 @@ function DetailProduct() {
                     </div>
                     <div className={contentSection}>
                         <div className={boxImage}>
-                            <img
-                                src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min.jpg"
-                                alt=""
-                            />
-                            <img
-                                src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min.jpg"
-                                alt=""
-                            />
-                            <img
-                                src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min.jpg"
-                                alt=""
-                            />
-                            <img
-                                src="https://xstore.8theme.com/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.1-min.jpg"
-                                alt=""
-                            />
+                            {dataSrc.map((item, index) => (
+                                <div key={index}>{ImageZoom(item.src)}</div>
+                            ))}
                         </div>
 
                         <div className={boxContent}>
@@ -205,7 +209,6 @@ function DetailProduct() {
                                 data={tempDateSlider}
                                 isProductItem
                                 slideToShowProduct={4}
-                               
                             />
                         </div>
                     </div>

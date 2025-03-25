@@ -62,4 +62,7 @@
 -- import { ToastContainer, toast } from 'react-toastify'
 
 ## React Slick hỗ trợ trượt slide 
--- 20/03 - b54
+
+## Accordion đàn hồi click đóng mở (đang code chay)
+
+## simple-image-magnifier thư viện zoom ảnh (pmpn add simple-image-magnifier)
