@@ -15,6 +15,7 @@ import SliderScroll from '@components/SliderScroll/SliderScroll'
 import React from 'react'
 import Zoom from 'react-img-zoom'
 import cls from 'classnames'
+
 const {
     container,
     breadcrumbsBox,
@@ -49,6 +50,7 @@ const {
 function DetailProduct() {
     const [menuSelect, setMenuSelect] = useState(1)
     const [sizeSlected, setSizeSelected] = useState('')
+    const [isQuantity, setIsQuantity] = useState(1)
 
     const dataAccordionMenu = [
         {
@@ -129,6 +131,13 @@ function DetailProduct() {
         setSizeSelected(size)
     }
 
+    const handleSetQuantity = (type) => {
+        setIsQuantity((prev) => {
+            if (type === 'decrease' && prev === 1) return prev
+            return type === 'decrease' ? prev - 1 : prev + 1
+        })
+    }
+
     return (
         <div>
             <MyHeader />
@@ -193,9 +202,21 @@ function DetailProduct() {
 
                             <div className={functionInfo}>
                                 <div className={quantity}>
-                                    <span>-</span>
-                                    <div>1</div>
-                                    <span>+</span>
+                                    <span
+                                        onClick={() =>
+                                            handleSetQuantity('decrease')
+                                        }
+                                    >
+                                        -
+                                    </span>
+                                    <div>{isQuantity}</div>
+                                    <span
+                                        onClick={() =>
+                                            handleSetQuantity('increase')
+                                        }
+                                    >
+                                        +
+                                    </span>
                                 </div>
                                 <div className={addCart}>
                                     <Button

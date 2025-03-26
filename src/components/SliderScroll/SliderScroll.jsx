@@ -19,30 +19,21 @@ function SliderScroll({ data, isProductItem = false, slideToShowProduct = 1 }) {
     }
     return (
         <Slider {...settings}>
-            {data.map((item, index) => {
-                return (
-                    <>
-                        {isProductItem ? (
-                            <ProductItem
-                                key={index}
-                                src={item.images}
-                                title={item.name}
-                                price={item.price}
-                                details={item}
-                                isHomePage={false}
-                                setShow={true}
-                            />
-                        ) : (
-                            <img
-                                key={index}
-                                src={item}
-                                alt=""
-                                className="thumb"
-                            />
-                        )}
-                    </>
+            {data.map((item, index) =>
+                isProductItem ? (
+                    <ProductItem
+                        key={index}
+                        src={item.images}
+                        title={item.name}
+                        price={item.price}
+                        details={item}
+                        isHomePage={false}
+                        setShow={true}
+                    />
+                ) : (
+                    <img key={index} src={item} alt="" className="thumb" />
                 )
-            })}
+            )}
         </Slider>
     )
 }
