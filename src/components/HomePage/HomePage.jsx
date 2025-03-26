@@ -7,7 +7,7 @@ import HeadingListProduct from '@components/HeadingListProduct/HeadingListProduc
 import { useEffect } from 'react'
 import PupularProduct from '@components/PupularProduct/PupularProduct'
 import { useState } from 'react'
-import getProduct from '@/apis/productService'
+import {getProduct} from '@/apis/productService'
 import SaleHomePage from '@components/SaleHomePage/SaleHomePage'
 import MyFooter from '@components/Footer/Footer'
 

@@ -10,4 +10,9 @@ const getProduct = async (query) => {
     return res.data
 }
 
-export default getProduct
+const getDetailProduct = async (id) => {
+    const res = await axiosClient.get(`/product/${id}`)
+    console.log(res)
+}
+
+export { getProduct, getDetailProduct }

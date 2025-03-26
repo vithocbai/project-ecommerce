@@ -15,7 +15,9 @@ import SliderScroll from '@components/SliderScroll/SliderScroll'
 import React from 'react'
 import Zoom from 'react-img-zoom'
 import cls from 'classnames'
-
+import { useEffect } from 'react'
+import { getDetailProduct } from '@/apis/productService'
+import { useParams } from 'react-router-dom'
 const {
     container,
     breadcrumbsBox,
@@ -51,6 +53,8 @@ function DetailProduct() {
     const [menuSelect, setMenuSelect] = useState(1)
     const [sizeSlected, setSizeSelected] = useState('')
     const [isQuantity, setIsQuantity] = useState(1)
+    const [data, setData] = useState()
+    const param = useParams()
 
     const dataAccordionMenu = [
         {
@@ -131,12 +135,27 @@ function DetailProduct() {
         setSizeSelected(size)
     }
 
+    const FeatchDataDetail = async (id) => {
+        try {
+            const data = await getDetailProduct(id)
+            setData(data)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
     const handleSetQuantity = (type) => {
         setIsQuantity((prev) => {
             if (type === 'decrease' && prev === 1) return prev
             return type === 'decrease' ? prev - 1 : prev + 1
         })
     }
+
+    useEffect(() => {
+        if (param.id) {
+            FeatchDataDetail(param.id)
+        }
+    }, [param])
 
     return (
         <div>

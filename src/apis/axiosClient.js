@@ -3,7 +3,7 @@ import Cookies from 'js-cookie'
 
 const axiosClient = axios.create({
     baseURL: 'https://be-project-reactjs.onrender.com/api/v1',
-    timeout: 10000,
+    timeout: 1000,
     headers: { 'Content-Type': 'application/json' }
 })
 

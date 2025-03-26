@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { createContext } from 'react'
-import getProduct from '@/apis/productService'
+import {getProduct} from '@/apis/productService'
 
 export const OurShopContext = createContext()
 
