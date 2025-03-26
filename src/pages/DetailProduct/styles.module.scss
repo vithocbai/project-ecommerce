@@ -38,7 +38,7 @@
     grid-template-columns: repeat(2, 1fr);
     align-items: start;
     width: 100%;
-    
+
     .boxImage {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -94,6 +94,13 @@
             .isActive {
                 border: 2px solid #000;
             }
+        }
+
+        .clearSize {
+            margin: 4px 0 16px;
+            font-size: 16px;
+            color: #222;
+            text-decoration: underline;
         }
 
         .functionInfo {
@@ -303,5 +310,14 @@
 
     .boxProductItem {
         width: 100%;
+    }
+}
+
+.activeDisabled {
+    cursor: not-allowed;
+    background-color: #555;
+    &:hover {
+        color: #fff;
+        background-color: #555;
     }
 }

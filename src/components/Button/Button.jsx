@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import styles from './styles.module.scss'
 
-function Button({ content, primary }) {
+function Button({ content, primary, classNameCustomer = false }) {
     const { btn } = styles
     return (
         <>
@@ -10,7 +10,8 @@ function Button({ content, primary }) {
                 className={classNames(
                     btn,
                     { [styles.primary]: true },
-                    { [styles.default]: !primary }
+                    { [styles.default]: !primary },
+                    { [classNameCustomer]: classNameCustomer }
                 )}
             >
                 {content}

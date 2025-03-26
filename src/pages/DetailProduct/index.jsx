@@ -14,7 +14,7 @@ import ReviewsProduct from '@/pages/DetailProduct/components/Reviews'
 import SliderScroll from '@components/SliderScroll/SliderScroll'
 import React from 'react'
 import Zoom from 'react-img-zoom'
-
+import cls from 'classnames'
 const {
     container,
     breadcrumbsBox,
@@ -31,6 +31,8 @@ const {
     size,
     boxSize,
     nameSize,
+    isActive,
+    clearSize,
     functionInfo,
     quantity,
     addCart,
@@ -41,10 +43,12 @@ const {
     productMeta,
     metaInfo,
     listProduct,
-    boxProductItem
+    boxProductItem,
+    activeDisabled
 } = styles
 function DetailProduct() {
     const [menuSelect, setMenuSelect] = useState(1)
+    const [sizeSlected, setSizeSelected] = useState('')
 
     const dataAccordionMenu = [
         {
@@ -58,6 +62,7 @@ function DetailProduct() {
             contentMenu: <div>{<ReviewsProduct />}</div>
         }
     ]
+
     const dataSrc = [
         {
             src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg'
@@ -69,10 +74,6 @@ function DetailProduct() {
             src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg'
         }
     ]
-
-    const ImageZoom = (src) => {
-        return <Zoom img={src} zoomScale={2} width={295} height={350} />
-    }
 
     const tempDateSlider = [
         {
@@ -101,8 +102,31 @@ function DetailProduct() {
         }
     ]
 
+    const dataSize = [
+        {
+            name: 'S',
+            amount: '1000'
+        },
+        {
+            name: 'M',
+            amount: '1000'
+        },
+        {
+            name: 'L',
+            amount: '1000'
+        }
+    ]
+
+    const ImageZoom = (src) => {
+        return <Zoom img={src} zoomScale={2} width={295} height={350} />
+    }
+
     const handleMenuSelect = (id) => {
         setMenuSelect(id)
+    }
+
+    const handleSelectedSize = (size) => {
+        setSizeSelected(size)
     }
 
     return (
@@ -121,6 +145,7 @@ function DetailProduct() {
                             &lt; Return to previous page
                         </div>
                     </div>
+
                     <div className={contentSection}>
                         <div className={boxImage}>
                             {dataSrc.map((item, index) => (
@@ -135,12 +160,37 @@ function DetailProduct() {
                                 Amet, elit tellus, nisi odio velit ut. Euismod
                                 sit arcu, quisque arcu purus orci leo.
                             </p>
-                            <div className={size}>Size</div>
+                            <div className={size}>Size: {sizeSlected}</div>
                             <div className={boxSize}>
-                                <div className={nameSize}>L</div>
-                                <div className={nameSize}>M</div>
-                                <div className={nameSize}>S</div>
+                                {dataSize.map((itemSize, index) => {
+                                    return (
+                                        <div
+                                            className={cls(nameSize, {
+                                                [isActive]:
+                                                    sizeSlected ===
+                                                    itemSize.name
+                                            })}
+                                            key={index}
+                                            onClick={() =>
+                                                handleSelectedSize(
+                                                    itemSize.name
+                                                )
+                                            }
+                                        >
+                                            {itemSize.name}
+                                        </div>
+                                    )
+                                })}
                             </div>
+                            {sizeSlected && (
+                                <div
+                                    className={clearSize}
+                                    onClick={() => setSizeSelected('')}
+                                >
+                                    clear
+                                </div>
+                            )}
+
                             <div className={functionInfo}>
                                 <div className={quantity}>
                                     <span>-</span>
@@ -148,7 +198,13 @@ function DetailProduct() {
                                     <span>+</span>
                                 </div>
                                 <div className={addCart}>
-                                    <Button content="ADD TO CART" primary />
+                                    <Button
+                                        content="ADD TO CART"
+                                        primary
+                                        classNameCustomer={
+                                            !sizeSlected && activeDisabled
+                                        }
+                                    />
                                 </div>
                             </div>
                             <div className={separate}>
@@ -160,6 +216,9 @@ function DetailProduct() {
                                 <Button
                                     primary
                                     content={<div>{<BsCart3 />} BUY NOW</div>}
+                                    classNameCustomer={
+                                        !sizeSlected && activeDisabled
+                                    }
                                 />
                             </div>
                             <div className={boxIcon}>
