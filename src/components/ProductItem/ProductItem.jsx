@@ -12,9 +12,9 @@ import { useEffect } from 'react'
 import { SideBarContext } from '@/context/SideBarProvider'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
-import { addProductCart } from '@/apis/cartServices'
 import { ImSpinner3 } from 'react-icons/im'
 import { useNavigate } from 'react-router-dom'
+import { handleAddProductToCart } from '@/utils/helper'
 
 function ProductItem({
     src,
@@ -75,39 +75,17 @@ function ProductItem({
     }
 
     const handleAddToCart = () => {
-        if (!userId) {
-            setIsOpen(true)
-            setType('login')
-            toast.warning('Bạn cần đăng nhập')
-            return
-        }
-
-        if (!isChooseSize) {
-            toast.warning('Bạn cần chọn Size')
-            return
-        }
-
-        const data = {
+        handleAddProductToCart(
+            setIsOpen,
+            setType,
+            toast,
+            isChooseSize,
             userId,
-            productId: details._id,
-            quantity: 1,
-            size: isChooseSize
-        }
-        setIsLoading(true)
-        addProductCart(data)
-            .then((res) => {
-                setIsOpen(true)
-                setType('cart')
-                toast.success('Thêm sản phẩm thành công')
-                setIsLoading(false)
-                if (userId) {
-                    handGetListProductsCart(userId, 'cart')
-                }
-            })
-            .catch((err) => {
-                console.log(err)
-                setIsLoading(false)
-            })
+            details._id,
+            1,
+            setIsLoading,
+            handGetListProductsCart
+        )
     }
 
     const handleShowDetailProductSidebar = () => {

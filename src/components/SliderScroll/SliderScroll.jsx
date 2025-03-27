@@ -20,32 +20,35 @@ function SliderScroll({ data, isProductItem = false, slideToShowProduct = 1 }) {
 
     return (
         <Slider {...settings}>
-        {data.map((item, index) => {
-            const src = item.images[0]
-            return (
-                <div>
-                    {isProductItem ? (
-                        <ProductItem
-                            key={index}
-                            src={src}
-                            title={item.name}
-                            price={item.price}
-                            details={item}
-                            isHomePage={false}
-                            setShow={true}
-                        />
-                    ) : (
-                        <img
-                            key={index}
-                            src={item}
-                            alt=""
-                            className="thumb"
-                        />
-                    )}
-                </div>
-            )
-        })}
-    </Slider>
+            {data.map((item, index) => {
+                const src = Array.isArray(item.images)
+                    ? item.images[0]
+                    : item.images
+
+                return (
+                    <div>
+                        {isProductItem ? (
+                            <ProductItem
+                                key={index}
+                                src={src}
+                                title={item.name}
+                                price={item.price}
+                                details={item}
+                                isHomePage={false}
+                                setShow={true}
+                            />
+                        ) : (
+                            <img
+                                key={index}
+                                src={item}
+                                alt=""
+                                className="thumb"
+                            />
+                        )}
+                    </div>
+                )
+            })}
+        </Slider>
     )
 }
 

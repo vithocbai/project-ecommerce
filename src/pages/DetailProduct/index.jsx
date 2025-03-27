@@ -18,6 +18,11 @@ import cls from 'classnames'
 import { useEffect } from 'react'
 import { getDetailProduct, getRealatedProduct } from '@/apis/productService'
 import { useParams } from 'react-router-dom'
+import { handleAddProductToCart } from '@/utils/helper'
+import { useContext } from 'react'
+import { SideBarContext } from '@/context/SideBarProvider'
+import Cookies from 'js-cookie'
+import { toast } from 'react-toastify'
 
 const {
     container,
@@ -56,8 +61,11 @@ function DetailProduct() {
     const [isQuantity, setIsQuantity] = useState(1)
     const [dataProduct, setDataProduct] = useState()
     const [dataProductRelated, setDataProductRelated] = useState([])
-
+    
     const param = useParams()
+    const { setIsOpen, setType, handGetListProductsCart } =
+        useContext(SideBarContext)
+    const userId = Cookies.get('userId')
 
     const dataAccordionMenu = [
         {
@@ -69,45 +77,6 @@ function DetailProduct() {
             id: 2,
             titleMenu: 'Reviews (0)',
             contentMenu: <div>{<ReviewsProduct />}</div>
-        }
-    ]
-
-    const dataSrc = [
-        {
-            src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg'
-        },
-        {
-            src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.1-min.jpg'
-        },
-        {
-            src: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg'
-        }
-    ]
-
-    const tempDateSlider = [
-        {
-            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg',
-            name: 'Related products',
-            price: '12000',
-            size: [{ name: 'M' }, { name: 'L' }]
-        },
-        {
-            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min.jpg',
-            name: 'Related products',
-            price: '12000',
-            size: [{ name: 'M' }, { name: 'L' }]
-        },
-        {
-            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-3.2-min.jpg',
-            name: 'Related products',
-            price: '12000',
-            size: [{ name: 'M' }, { name: 'L' }]
-        },
-        {
-            images: 'https://xstore.b-cdn.net/elementor2/marseille04/wp-content/uploads/sites/2/2022/12/Image-1.2-min.jpg',
-            name: 'Related products',
-            price: '12000',
-            size: [{ name: 'M' }, { name: 'L' }]
         }
     ]
 
@@ -160,6 +129,21 @@ function DetailProduct() {
             if (type === 'decrease' && prev === 1) return prev
             return type === 'decrease' ? prev - 1 : prev + 1
         })
+    }
+
+
+    const addProductToCart = () => {
+        handleAddProductToCart(
+            setIsOpen,
+            setType,
+            toast,
+            sizeSlected,
+            userId,
+            param.id,
+            isQuantity,
+            setIsLoading,
+            handGetListProductsCart
+        )
     }
 
     useEffect(() => {
@@ -246,7 +230,10 @@ function DetailProduct() {
                                         +
                                     </span>
                                 </div>
-                                <div className={addCart}>
+                                <div
+                                    className={addCart}
+                                    onClick={() => addProductToCart()}
+                                >
                                     <Button
                                         content="ADD TO CART"
                                         primary
