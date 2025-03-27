@@ -11,8 +11,23 @@ const getProduct = async (query) => {
 }
 
 const getDetailProduct = async (id) => {
-    const res = await axiosClient.get(`/product/${id}`)
-    console.log(res)
+    try {
+        const res = await axiosClient.get(`/product/${id}`)
+        if (!res.data) {
+            throw new Error('Product not found')
+        }
+        return res.data
+    } catch (error) {
+        console.error(error)
+        throw error
+    }
 }
 
-export { getProduct, getDetailProduct }
+
+const getRealatedProduct = async (id) => {
+    const res = await axiosClient.get(`/related-products/${id}`)
+    if (res.data) return res.data.relatedProducts
+    return []
+}
+
+export { getProduct, getDetailProduct, getRealatedProduct }

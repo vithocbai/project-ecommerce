@@ -1,13 +1,13 @@
-@import '@styles/mixin.module.scss';
+@import '@styles/_mixin.module.scss';
 
 .container {
-    @include flex_box_custom(normal,space-between,0);
+    @include flex_box_custom(normal, space-between, 0);
     height: 100%;
     flex-direction: column;
     width: 100%;
 
     .groupBtn {
-        @include flex_box_custom(normal,center,10px);
+        @include flex_box_custom(normal, center, 10px);
         flex-direction: column;
         height: 95px;
     }

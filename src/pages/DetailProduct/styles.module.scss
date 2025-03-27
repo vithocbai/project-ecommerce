@@ -1,5 +1,5 @@
-@import '@styles/mixin.module.scss';
-@import '@styles/variable.module.scss';
+@import '@styles/_mixin.module.scss';
+@import '@styles/_variable.module.scss';
 
 .container {
     padding-top: 83px;
@@ -119,7 +119,7 @@
                 padding-right: 4px;
                 padding-left: 4px;
                 border: 1px solid #e1e1e1;
-                user-select: none
+                user-select: none;
             }
 
             div {

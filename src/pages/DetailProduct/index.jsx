@@ -16,8 +16,9 @@ import React from 'react'
 import Zoom from 'react-img-zoom'
 import cls from 'classnames'
 import { useEffect } from 'react'
-import { getDetailProduct } from '@/apis/productService'
+import { getDetailProduct, getRealatedProduct } from '@/apis/productService'
 import { useParams } from 'react-router-dom'
+
 const {
     container,
     breadcrumbsBox,
@@ -53,7 +54,9 @@ function DetailProduct() {
     const [menuSelect, setMenuSelect] = useState(1)
     const [sizeSlected, setSizeSelected] = useState('')
     const [isQuantity, setIsQuantity] = useState(1)
-    const [data, setData] = useState()
+    const [dataProduct, setDataProduct] = useState()
+    const [dataProductRelated, setDataProductRelated] = useState([])
+
     const param = useParams()
 
     const dataAccordionMenu = [
@@ -138,12 +141,20 @@ function DetailProduct() {
     const FeatchDataDetail = async (id) => {
         try {
             const data = await getDetailProduct(id)
-            setData(data)
+            setDataProduct(data)
         } catch (err) {
             console.log(err)
         }
     }
 
+    const FeatchDataRelated = async (id) => {
+        try {
+            const data = await getRealatedProduct(id)
+            if (data) setDataProductRelated(data)
+        } catch (err) {
+            console.error(err)
+        }
+    }
     const handleSetQuantity = (type) => {
         setIsQuantity((prev) => {
             if (type === 'decrease' && prev === 1) return prev
@@ -154,6 +165,7 @@ function DetailProduct() {
     useEffect(() => {
         if (param.id) {
             FeatchDataDetail(param.id)
+            FeatchDataRelated(param.id)
         }
     }, [param])
 
@@ -176,18 +188,15 @@ function DetailProduct() {
 
                     <div className={contentSection}>
                         <div className={boxImage}>
-                            {dataSrc.map((item, index) => (
-                                <div key={index}>{ImageZoom(item.src)}</div>
+                            {dataProduct?.images.map((item, index) => (
+                                <div key={index}>{ImageZoom(item)}</div>
                             ))}
                         </div>
 
                         <div className={boxContent}>
-                            <h2 className={heading}>10K Yellow Gold</h2>
-                            <p className={price}>$99.99</p>
-                            <p className={desc}>
-                                Amet, elit tellus, nisi odio velit ut. Euismod
-                                sit arcu, quisque arcu purus orci leo.
-                            </p>
+                            <h2 className={heading}>{dataProduct?.name}</h2>
+                            <p className={price}>${dataProduct?.price}</p>
+                            <p className={desc}>{dataProduct?.description}</p>
                             <div className={size}>Size: {sizeSlected}</div>
                             <div className={boxSize}>
                                 {dataSize.map((itemSize, index) => {
@@ -305,7 +314,7 @@ function DetailProduct() {
                         <h3>Related products</h3>
                         <div className={boxProductItem}>
                             <SliderScroll
-                                data={tempDateSlider}
+                                data={dataProductRelated}
                                 isProductItem
                                 slideToShowProduct={4}
                             />

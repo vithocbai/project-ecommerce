@@ -117,7 +117,6 @@ function ProductItem({
     }
 
     const handleNavigateToDetails = () => {
-        console.log(details._id)
         const path = `/product/${details._id}`
         navigate(path)
     }

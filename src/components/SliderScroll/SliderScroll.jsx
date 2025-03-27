@@ -17,24 +17,35 @@ function SliderScroll({ data, isProductItem = false, slideToShowProduct = 1 }) {
         nextArrow: <IoIosArrowForward />,
         prevArrow: <IoIosArrowBack />
     }
+
     return (
         <Slider {...settings}>
-            {data.map((item, index) =>
-                isProductItem ? (
-                    <ProductItem
-                        key={index}
-                        src={item.images}
-                        title={item.name}
-                        price={item.price}
-                        details={item}
-                        isHomePage={false}
-                        setShow={true}
-                    />
-                ) : (
-                    <img key={index} src={item} alt="" className="thumb" />
-                )
-            )}
-        </Slider>
+        {data.map((item, index) => {
+            const src = item.images[0]
+            return (
+                <div>
+                    {isProductItem ? (
+                        <ProductItem
+                            key={index}
+                            src={src}
+                            title={item.name}
+                            price={item.price}
+                            details={item}
+                            isHomePage={false}
+                            setShow={true}
+                        />
+                    ) : (
+                        <img
+                            key={index}
+                            src={item}
+                            alt=""
+                            className="thumb"
+                        />
+                    )}
+                </div>
+            )
+        })}
+    </Slider>
     )
 }
 

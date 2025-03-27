@@ -1,8 +1,8 @@
-@import '@styles/mixin.module.scss';
+@import '@styles/_mixin.module.scss';
 
 .container {
     position: relative;
-   
+
     .overlay {
         position: fixed;
         z-index: 999;

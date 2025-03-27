@@ -1,7 +1,7 @@
-@import '@styles/mixin.module.scss';
+@import '@styles/_mixin.module.scss';
 
 .container {
-    @include flex_box_custom(normal,space-between,0);
+    @include flex_box_custom(normal, space-between, 0);
     height: 100%;
     flex-direction: column;
     width: 100%;

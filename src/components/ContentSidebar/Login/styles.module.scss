@@ -1,5 +1,5 @@
-@import '@styles/variable.module.scss';
-@import '@styles/mixin.module.scss';
+@import '@styles/_variable.module.scss';
+@import '@styles/_mixin.module.scss';
 
 .container {
     .title {
@@ -43,7 +43,7 @@
         margin-bottom: 5px;
         font-size: 14px;
         color: $thrid_color;
-    } 
+    }
 
     .submitForm {
         border: 1px solid $primary_color;

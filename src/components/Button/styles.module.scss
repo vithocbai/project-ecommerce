@@ -1,5 +1,5 @@
-@import '@styles/mixin.module.scss';
-@import '@styles/variable.module.scss';
+@import '@styles/_mixin.module.scss';
+@import '@styles/_variable.module.scss';
 
 .btn {
     @include btn(100%, 100%, 3px);
@@ -10,7 +10,7 @@
     font-size: 14px;
     font-weight: 400;
     fill: #fff;
-    
+
     &:hover {
         transition: background-color 200ms linear;
         background-color: #ffffff00;
