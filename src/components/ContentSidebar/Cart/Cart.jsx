@@ -29,7 +29,6 @@ function Cart({ isCart }) {
     const handleNavigateCart = () => {
         navigate('/cart')
         setIsOpen(false)
-        console.log('ac')
     }
 
     const subTotal = listProductCart.reduce((total, item) => {
@@ -70,7 +69,6 @@ function Cart({ isCart }) {
                         <p className="title">SUBTOTAL:</p>
                         <span>${subTotal.toFixed(2)}</span>
                     </div>
-
                     <div className={groupBtn}>
                         <div
                             className={actBtn}

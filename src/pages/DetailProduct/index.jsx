@@ -23,6 +23,8 @@ import { useContext } from 'react'
 import { SideBarContext } from '@/context/SideBarProvider'
 import Cookies from 'js-cookie'
 import { toast } from 'react-toastify'
+import { addProductCart } from '@/apis/cartServices'
+import { useNavigate } from 'react-router-dom'
 
 const {
     container,
@@ -61,7 +63,9 @@ function DetailProduct() {
     const [isQuantity, setIsQuantity] = useState(1)
     const [dataProduct, setDataProduct] = useState()
     const [dataProductRelated, setDataProductRelated] = useState([])
-    
+    const [isLoading, setIsLoading] = useState(false)
+    const navigate = useNavigate()
+
     const param = useParams()
     const { setIsOpen, setType, handGetListProductsCart } =
         useContext(SideBarContext)
@@ -131,7 +135,6 @@ function DetailProduct() {
         })
     }
 
-
     const addProductToCart = () => {
         handleAddProductToCart(
             setIsOpen,
@@ -144,6 +147,26 @@ function DetailProduct() {
             setIsLoading,
             handGetListProductsCart
         )
+    }
+
+    const buyNow = () => {
+        const data = {
+            userId,
+            productId: param.id,
+            quantity: isQuantity,
+            size: sizeSlected
+        }
+        addProductCart(data)
+            .then((res) => {
+                toast.success('Add Product to cart successfully')
+                setIsLoading(false)
+            })
+            .catch((err) => {
+                toast.error('Add Product to cart failed')
+                setIsLoading(false)
+            })
+
+        navigate('/cart')
     }
 
     useEffect(() => {
@@ -206,9 +229,11 @@ function DetailProduct() {
                             {sizeSlected && (
                                 <div
                                     className={clearSize}
-                                    onClick={() => setSizeSelected('')}
+                                    onClick={() => {
+                                        setSizeSelected('')
+                                    }}
                                 >
-                                    clear
+                                    Clear
                                 </div>
                             )}
 
@@ -232,7 +257,9 @@ function DetailProduct() {
                                 </div>
                                 <div
                                     className={addCart}
-                                    onClick={() => addProductToCart()}
+                                    onClick={() => {
+                                        if (sizeSlected) addProductToCart()
+                                    }}
                                 >
                                     <Button
                                         content="ADD TO CART"
@@ -248,6 +275,9 @@ function DetailProduct() {
                             </div>
                             <div
                                 style={{ height: '40px', marginBottom: '12px' }}
+                                onClick={() => {
+                                    if (sizeSlected) buyNow()
+                                }}
                             >
                                 <Button
                                     primary

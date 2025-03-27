@@ -36,7 +36,7 @@ export const handleAddProductToCart = (
         .then((res) => {
             setIsOpen(true)
             setType('cart')
-            toast.success('Thêm sản phẩm thành công')
+            toast.success('Add Product to cart successfully')
             setIsLoading(false)
             if (userId) {
                 handGetListProductsCart(userId, 'cart')

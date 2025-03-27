@@ -10,6 +10,8 @@ import { SideBarContext } from '@/context/SideBarProvider'
 import { addProductCart, deleteCart, deleteAllCart } from '@/apis/cartServices'
 import { BsCart3 } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
+import { getCart } from '@/apis/cartServices'
 
 function Contents() {
     const {
@@ -25,7 +27,7 @@ function Contents() {
         actBtn
     } = styles
 
-    const { listProductCart, handGetListProductsCart, userId } =
+    const { listProductCart, handGetListProductsCart, userId, setListProductCart} =
         useContext(SideBarContext)
     const navigate = useNavigate()
 
@@ -57,10 +59,17 @@ function Contents() {
 
     const handleNavigation = () => {
         navigate('/shop')
-
     }
 
-   
+    useEffect(() => {
+        getCart(userId)
+            .then((res) => {
+                setListProductCart(res.data.data)
+            })
+            .catch((err) => {
+                setListProductCart([])
+            })
+    }, [])
 
     return (
         <>
@@ -103,7 +112,7 @@ function Contents() {
                     </div>
                 ) : (
                     <div className={boxCartEmty}>
-                        <div style={{ fontSize: '40px', color: '#5b5b5b'}}>
+                        <div style={{ fontSize: '40px', color: '#5b5b5b' }}>
                             <BsCart3 />
                         </div>
                         <h2 className={heading}>YOUR SHOPPING CART IS EMPTY</h2>

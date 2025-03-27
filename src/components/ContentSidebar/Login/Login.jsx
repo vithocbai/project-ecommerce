@@ -87,7 +87,7 @@ function Login() {
                         Cookies.set('userId', id)
                         handGetListProductsCart(id, 'cart')
                         toast.success(
-                            res.data?.message || 'Đăng nhập thành công!'
+                            res.data?.message || 'Login successfully!'
                         )
                         setIsLoading(false)
                         setIsOpen(false)
