@@ -1,10 +1,17 @@
 import styles from './styles.module.scss'
 import { IoChevronDown } from 'react-icons/io5'
 import { GrFormSubtract } from 'react-icons/gr'
+import { IoIosAdd } from 'react-icons/io'
+import { RiSubtractFill } from 'react-icons/ri'
 import cls from 'classnames'
-import InfomationProduct from '@/pages/DetailProduct/components/Infomation'
 
-function Accordion({ titleMenu, contentMenu, onClick, isSelect }) {
+function Accordion({
+    titleMenu,
+    contentMenu,
+    onClick,
+    isSelect,
+    isIcon = false
+}) {
     const {
         container,
         infomation,
@@ -29,7 +36,18 @@ function Accordion({ titleMenu, contentMenu, onClick, isSelect }) {
                     })}
                     onClick={() => checkAccordion()}
                 >
-                    {isSelect ? <GrFormSubtract /> : <IoChevronDown />}
+                    {isIcon ? (
+                        isSelect ? (
+                            <GrFormSubtract />
+                        ) : (
+                            <IoChevronDown />
+                        )
+                    ) : isSelect ? (
+                        <IoIosAdd />
+                    ) : (
+                        <RiSubtractFill />
+                    )}
+
                     {titleMenu}
                 </div>
 
@@ -40,8 +58,6 @@ function Accordion({ titleMenu, contentMenu, onClick, isSelect }) {
                 >
                     <div>{contentMenu}</div>
                 </div>
-                
-                
             </div>
         </div>
     )

@@ -1,0 +1,116 @@
+@import '@styles/_mixin.module.scss';
+@import '@styles/_variable.module.scss';
+
+.container {
+    margin-top: 83px;
+
+    .breadcrumbsBox {
+        @include flex_box_custom(center, space-between, 0);
+        color: $primary_color;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .breadcrumbs {
+        @include flex_box_custom(center, flex-start, 8px);
+        color: $second_color;
+    }
+
+    .homeNav {
+        text-decoration: none;
+        color: $second_color;
+    }
+
+    .breadcrumbsLink {
+        color: $primary_color;
+        font-size: 14px;
+        font-weight: 400;
+    }
+
+    .backHome {
+        cursor: pointer;
+        color: $second_color;
+    }
+}
+
+.shop {
+
+    text-align: center;
+
+    &__header {
+        padding: 15px;
+    }
+
+    &__subtitle {
+        font-size: 14px;
+        text-transform: uppercase;
+        line-height: 26px;
+        color: $thrid_color;
+        font-weight: 400;
+    }
+
+    &__title {
+        position: relative;
+        font-size: 24px;
+        line-height: 32px;
+        margin-bottom: 20px;
+        color: $primary_color;
+        font-weight: 400;
+
+        &::before {
+            position: absolute;
+            top: 0;
+            left: -15px;
+            content: '';
+            display: block;
+            border-bottom: 4px double #e1e1e1;
+            position: absolute;
+            top: 50%;
+            width: 26%;
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            right: -15px;
+            content: '';
+            display: block;
+            border-bottom: 4px double #e1e1e1;
+            position: absolute;
+            top: 50%;
+            width: 26%;
+        }
+    }
+
+    &__content {
+        @include grid(3, 0, 0);
+        gap: 30px;
+    }
+
+    &__item {
+        text-align: left;
+    }
+
+    &__image {
+        width: 100%;
+        margin-bottom: 30px;
+        cursor: pointer;
+    }
+
+    &__text {
+        color: $thrid_color;
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 26px;
+    }
+    
+    &__slider {
+       padding: 15px;
+       margin: 40px auto 50px;
+
+       &__img {
+        max-width: 200px;
+       }
+    }
+
+}

@@ -23,8 +23,7 @@ function SliderScroll({ data, isProductItem = false, slideToShowProduct = 1 }) {
             {data.map((item, index) => {
                 const src = Array.isArray(item.images)
                     ? item.images[0]
-                    : item.images
-
+                    : item
                 return (
                     <div>
                         {isProductItem ? (
@@ -40,7 +39,7 @@ function SliderScroll({ data, isProductItem = false, slideToShowProduct = 1 }) {
                         ) : (
                             <img
                                 key={index}
-                                src={item}
+                                src={src}
                                 alt=""
                                 className="thumb"
                             />

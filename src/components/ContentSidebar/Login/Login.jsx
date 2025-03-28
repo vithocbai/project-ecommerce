@@ -28,9 +28,7 @@ function Login() {
     const { toast } = useContext(ToastContext)
     const { setIsOpen, handGetListProductsCart } = useContext(SideBarContext)
     const { setUserId } = useContext(StoreContext)
-    
 
-    
     useEffect(() => {
         getInfo()
     }, [])

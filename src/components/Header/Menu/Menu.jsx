@@ -13,9 +13,12 @@ function Menu({ content, href }) {
     const [isShowSubMenu, setIsShowSubMenu] = useState(false)
     const navigate = useNavigate()
 
-    const handleNavigate = (path) => {
-        navigate(path)
+    const navigateTo = (path) => {
+        if (window.location.pathname !== `/${path}`) {
+            navigate(`/${path}`)
+        }
     }
+    
 
     const handleShowLogin = () => {
         if (!userInfo) {
@@ -24,12 +27,18 @@ function Menu({ content, href }) {
         }
     }
 
-    const handleClickShowLogin = () => {
+    const handleClickShowLogin = (event) => {
         if (content === 'Sign In') {
             handleShowLogin()
         }
         if (content == 'Our Shop') {
-            handleNavigate('shop')
+            navigateTo('shop')
+        }
+        if (content == 'About us') {
+            navigateTo('about-us')
+        }
+        if (content == 'Contacts') {
+            navigateTo('contacts')
         }
     }
 

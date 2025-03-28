@@ -104,7 +104,7 @@ function DetailProduct() {
     }
 
     const handleMenuSelect = (id) => {
-        setMenuSelect(id)
+        setMenuSelect(menuSelect === id ? null : id)
     }
 
     const handleSelectedSize = (size) => {
