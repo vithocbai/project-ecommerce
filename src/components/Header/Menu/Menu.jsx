@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom'
 
 function Menu({ content, href }) {
     const { menu, subMenu } = styles
-    const { setIsOpen, setType } = useContext(SideBarContext)
+
+    const { setIsOpen, setType, setShowSearchBar, showSearchBar } =
+        useContext(SideBarContext)
     const { userInfo, setUserInfoLogOut } = useContext(StoreContext)
     const [isShowSubMenu, setIsShowSubMenu] = useState(false)
     const navigate = useNavigate()
@@ -18,7 +20,6 @@ function Menu({ content, href }) {
             navigate(`/${path}`)
         }
     }
-    
 
     const handleShowLogin = () => {
         if (!userInfo) {
@@ -40,6 +41,10 @@ function Menu({ content, href }) {
         if (content == 'Contacts') {
             navigateTo('contacts')
         }
+        if(content == 'Search') {
+            handleRenderSearchBar()
+        }
+        
     }
 
     const handleRenderUser = (content) => {
@@ -53,6 +58,7 @@ function Menu({ content, href }) {
     const handleRenderSubMenu = () => {
         if (content === 'Sign In' && userInfo) {
             setIsShowSubMenu(true)
+            setType('search')
         }
     }
 
@@ -63,6 +69,11 @@ function Menu({ content, href }) {
         setIsShowSubMenu(false)
         setUserInfoLogOut()
         window.location.reload()
+    }
+
+    const handleRenderSearchBar = () => {
+        setShowSearchBar(true)
+        setType('search')
     }
 
     return (

@@ -12,4 +12,5 @@ const getInfo = async (userId) => {
     return await axiosClient.get(`user/info/${userId}`)
 }
 
+
 export { register, login, getInfo }

@@ -29,6 +29,10 @@ const routers = [
         path: '/contacts',
         components: lazy(() => import('@pages/Contacts'))
     },
+    // {
+    //     path: '/search',
+    //     components: lazy(() => import('@pages/Search'))
+    // }
 ]
 
 export default routers

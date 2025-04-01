@@ -5,6 +5,7 @@ import { SideBarProvider } from '@/context/SideBarProvider'
 import Sidebar from '@components/Sidebar/Sidebar'
 import ToastProvider from '@/context/ToastProvider'
 import StoreProvider from '@/context/StoreProvider'
+import SearchBar from '@components/SearchBar/SearchBar'
 
 function App() {
     return (
@@ -13,6 +14,7 @@ function App() {
                 <SideBarProvider>
                     <BrowserRouter basename="/project-ecommerce">
                         <Sidebar />
+                        <SearchBar />
                         <Suspense fallback={<div>Loading...</div>}>
                             <Routes>
                                 {routers.map((item, index) => {

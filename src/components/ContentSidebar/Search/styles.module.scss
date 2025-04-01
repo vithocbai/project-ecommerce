@@ -1,0 +1,83 @@
+@import '@styles/_variable.module.scss';
+
+.searchContainer {
+    text-align: center;
+    .title {
+        font-weight: 400;
+        font-size: 24px;
+        color: $primary_color;
+        margin-bottom: 20px;
+    }
+
+    .searchBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 15px;
+        width: 100%;
+        
+        .categorySelect {
+            
+            select {
+                padding: 11px;
+                color: #333;
+            }
+        }
+
+        .searchInput {
+            padding: 10px 14px;
+            width: 30%;
+            border: 1px solid #ccc;
+            outline: none;
+        }
+
+        .searchButton {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 12px 16px;
+            background-color: #333;
+            color: white;
+            border: none;
+            font-size: 14px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #555;
+            }
+        }
+    }
+
+    .trending {
+        .trendingTitle {
+            font-size: 16px;
+            color: $thrid_color;
+        }
+
+        .trendingItem {
+            display: inline-block;
+            background: #f3f3f3;
+            padding: 5px 10px;
+            margin: 5px;
+            color: $detail_color;
+            cursor: pointer;
+
+            &:hover {
+                background: #ddd;
+            }
+        }
+    }
+
+    .productItemSearch {
+        display: flex;
+        gap: 10px;
+        padding: 10px;
+        
+    }
+
+    .productText {
+        text-align: center;
+        padding: 20px;
+        margin: 0 auto;
+    }
+}
