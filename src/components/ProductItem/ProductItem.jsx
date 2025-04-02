@@ -54,7 +54,9 @@ function ProductItem({
         handGetListProductsCart,
         setDetailProduct,
         compareList,
-        setCompareList
+        setCompareList,
+        wishList,
+        setWishList
     } = useContext(SideBarContext)
 
     const userId = Cookies.get('userId')
@@ -113,6 +115,18 @@ function ProductItem({
         setIsOpen(true)
         setType('compare')
     }
+ 
+    const handleShowWishSidebar = () => {
+        // Kiểm tra nếu sản phẩm đã có trong compareList thì không thêm lại
+        const isAlreadyAdded = wishList.some((item) => item._id === details._id)
+        if (!isAlreadyAdded) {
+            setWishList([...wishList, details])
+        }
+
+        setIsOpen(true)
+        setType('wishlist')
+    }
+
     const handleNavigateToDetails = () => {
         const path = `/product/${details._id}`
         navigate(path)
@@ -129,7 +143,7 @@ function ProductItem({
                     <div className={icon}>
                         <IoBagOutline style={{ fontSize: '20px' }} />
                     </div>
-                    <div className={icon}>
+                    <div className={icon} onClick={() => handleShowWishSidebar()}>
                         <IoMdHeartEmpty style={{ fontSize: '22px' }} />
                     </div>
                     <div

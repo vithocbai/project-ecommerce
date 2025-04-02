@@ -11,10 +11,7 @@ function Compare() {
     const { container } = styles
     const { compareList, setCompareList } = useContext(SideBarContext)
     const userId = Cookies.get('userId')
-    const handleRemoveFromCompare = (productId) => {
-        setCompareList(compareList.filter((item) => item._id !== productId))
-    }
-
+    
     return (
         <div className={container}>
             <div>

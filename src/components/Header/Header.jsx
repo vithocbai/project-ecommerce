@@ -29,7 +29,7 @@ function MyHeader() {
     const { scrollPositon } = useScrollHandling()
     const [fixedHeader, setFixedhader] = useState()
 
-    const { setIsOpen, setType, listProductCart, compareList } =
+    const { setIsOpen, setType, listProductCart, compareList, wishList } =
         useContext(SideBarContext)
     const handleOpenSideBar = (type) => {
         setIsOpen(true)
@@ -106,10 +106,18 @@ function MyHeader() {
                                 </span> // ✅ Hiển thị số lượng Compare
                             )}
                         </div>
-                        <CiHeart
-                            style={{ fontSize: '28px' }}
-                            onClick={() => handleOpenSideBar('wishlist')}
-                        />
+                        <div className={boxCart}>
+                            <CiHeart
+                                style={{ fontSize: '28px' }}
+                                onClick={() => handleOpenSideBar('wishlist')}
+                            />
+                            {wishList.length > 0 && (
+                                <span className={quantity}>
+                                    {wishList.length}
+                                </span> // ✅ Hiển thị số lượng Compare
+                            )}
+                        </div>
+
                         <div className={boxCart}>
                             <BsCartCheck
                                 style={{ fontSize: '22px' }}

@@ -13,6 +13,7 @@ export const SideBarProvider = ({ children }) => {
     const [detailProduct, setDetailProduct] = useState(null)
     const [showSearchBar, setShowSearchBar] = useState(false)
     const [compareList, setCompareList] = useState([])
+    const [wishList, setWishList] = useState([])
     const userId = Cookies.get('userId')
 
     const handGetListProductsCart = (userId, type) => {
@@ -45,7 +46,9 @@ export const SideBarProvider = ({ children }) => {
         setShowSearchBar,
         showSearchBar,
         compareList,
-        setCompareList
+        setCompareList,
+        wishList,
+        setWishList
     }
 
     return (
