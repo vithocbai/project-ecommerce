@@ -7,20 +7,14 @@ import { useContext } from 'react'
 import { SideBarContext } from '@/context/SideBarProvider'
 import { useNavigate } from 'react-router-dom'
 
-function Cart({ isCart }) {
-    const {
-        container,
-        total,
-        groupBtn,
-        actBtn,
-        infoCart,
-        returnShop,
-        desc
-    } = styles
+function Cart() {
+    const { container, total, groupBtn, actBtn, infoCart, returnShop, desc } =
+        styles
 
     const { listProductCart, setIsOpen } = useContext(SideBarContext)
     const navigate = useNavigate()
-
+    console.log(listProductCart)
+    
     const handleNavigateOurShop = () => {
         navigate('/shop')
         setIsOpen(false)

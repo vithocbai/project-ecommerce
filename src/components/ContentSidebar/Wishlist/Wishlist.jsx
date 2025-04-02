@@ -20,7 +20,7 @@ function Wishlist() {
                 <ProductItem isCart={false}/>
             </div>
             <div className={groupBtn}>
-                <Button content="VIEW WISHLIST" primary/>
+                <Button content="VIEW WISHLIST" />
                 <Button content="ADD ALL TO CART"/>
             </div>
         </div>

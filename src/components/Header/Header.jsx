@@ -29,8 +29,8 @@ function MyHeader() {
     const { scrollPositon } = useScrollHandling()
     const [fixedHeader, setFixedhader] = useState()
 
-    const { setIsOpen, setType, listProductCart } = useContext(SideBarContext)
-
+    const { setIsOpen, setType, listProductCart, compareList } =
+        useContext(SideBarContext)
     const handleOpenSideBar = (type) => {
         setIsOpen(true)
         setType(type)
@@ -94,10 +94,18 @@ function MyHeader() {
                             })}
                     </div>
                     <div className={containerBoxIcon}>
-                        <TfiReload
-                            style={{ fontSize: '22px' }}
-                            onClick={() => handleOpenSideBar('compare')}
-                        />
+                        <div className={boxCart}>
+                            <TfiReload
+                                style={{ fontSize: '22px' }}
+                                onClick={() => handleOpenSideBar('compare')}
+                            />
+
+                            {compareList.length > 0 && (
+                                <span className={quantity}>
+                                    {compareList.length}
+                                </span> // ✅ Hiển thị số lượng Compare
+                            )}
+                        </div>
                         <CiHeart
                             style={{ fontSize: '28px' }}
                             onClick={() => handleOpenSideBar('wishlist')}

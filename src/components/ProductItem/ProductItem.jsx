@@ -1,8 +1,8 @@
 import styles from './styles.module.scss'
-import reLoad from '@icons/svgs/reLoadIcon.svg'
-import heartIcon from '@icons/svgs/heartIcon.svg'
-import eyeIcon from '@icons/svgs/eyeIcon.svg'
-import bagIcon from '@icons/svgs/bagIcon.svg'
+import { TfiReload } from 'react-icons/tfi'
+import { IoEyeOutline } from 'react-icons/io5'
+import { IoBagOutline } from 'react-icons/io5'
+import { IoMdHeartEmpty } from 'react-icons/io'
 import cls from 'classnames'
 import Button from '@components/Button/Button'
 import { useContext } from 'react'
@@ -48,8 +48,15 @@ function ProductItem({
     const [isChooseSize, setIsChooseSize] = useState('')
     const [isShowGrid, setIsShowGrid] = useState(ourShopStore?.isShowGrid)
 
-    const { setIsOpen, setType, handGetListProductsCart, setDetailProduct } =
-        useContext(SideBarContext)
+    const {
+        setIsOpen,
+        setType,
+        handGetListProductsCart,
+        setDetailProduct,
+        compareList,
+        setCompareList
+    } = useContext(SideBarContext)
+
     const userId = Cookies.get('userId')
     const [isLoading, setIsLoading] = useState(false)
     const navigate = useNavigate()
@@ -94,6 +101,18 @@ function ProductItem({
         setDetailProduct(details)
     }
 
+    const handleShowReloadSidebar = () => {
+        // Kiểm tra nếu sản phẩm đã có trong compareList thì không thêm lại
+        const isAlreadyAdded = compareList.some(
+            (item) => item._id === details._id
+        )
+        if (!isAlreadyAdded) {
+            setCompareList([...compareList, details])
+        }
+
+        setIsOpen(true)
+        setType('compare')
+    }
     const handleNavigateToDetails = () => {
         const path = `/product/${details._id}`
         navigate(path)
@@ -108,19 +127,22 @@ function ProductItem({
                 </div>
                 <div className={iconFncWhenShow}>
                     <div className={icon}>
-                        <img src={bagIcon} alt="" />
+                        <IoBagOutline style={{ fontSize: '20px' }} />
                     </div>
                     <div className={icon}>
-                        <img src={heartIcon} alt="" />
+                        <IoMdHeartEmpty style={{ fontSize: '22px' }} />
                     </div>
-                    <div className={icon}>
-                        <img src={reLoad} alt="" />
+                    <div
+                        className={icon}
+                        onClick={() => handleShowReloadSidebar()}
+                    >
+                        <TfiReload style={{ fontSize: '18px' }} />
                     </div>
                     <div
                         className={icon}
                         onClick={() => handleShowDetailProductSidebar()}
                     >
-                        <img src={eyeIcon} alt="" />
+                        <IoEyeOutline style={{ fontSize: '20px' }} />
                     </div>
                 </div>
             </div>
